@@ -1,0 +1,46 @@
+@import "_settings";
+@import "normalize";
+@import "foundation";
+
+html, body{
+    height: 100%;
+}
+div.container{
+    hight: auto;
+    min-height: 100%;
+    padding-bottom: 150px;
+}
+
+
+footer.footer{
+    background: $topbar-bg-color;
+    height: 150px;
+    margin-top: -150px;
+    clear:both;
+    max-width: 100%;
+    h4{
+        color: #FFF;
+        padding: 2rem;
+    }
+}
+
+/********* logo tiers ***********/
+span.logo-small-tiers{
+    width: 40px;
+    height: 40px;
+    background-size: 120px 40px;
+    display: inline-block;
+}
+.image-facebook{
+    background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
+    background-position: 0;
+}
+.image-google{
+    background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
+    background-position: 80px;
+}
+.image-twitter{
+    background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
+    background-position: 40px;
+}
+/**************************************/

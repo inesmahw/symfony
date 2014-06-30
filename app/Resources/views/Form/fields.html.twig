@@ -144,30 +144,3 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_label %}
-
-
-{% block centaure_bundles_userbundle_checkboxaligntype_widget %}
-{% spaceless %}
-    <div {{ block('widget_container_attributes') }} >
-        <div class="row">
-            <div class="small-12 large-12 columns text-right" >
-                <a href="javascript:void(0);" id="userplayer-show" style="display: none;"  onClick="$('.usersplayers_display').show();$('#userplayer-hide').show();$(this).hide();">{{ 'link.show'|trans }}</a>
-            </div>
-            <div class="small-12 large-12 columns text-right" >
-                <a href="javascript:void(0);" id="userplayer-hide" onClick="$('.usersplayers_display').hide();$('#userplayer-show').show();$(this).hide();">{{ 'link.hide'|trans }}</a>
-            </div>
-        </div>
-        <div class="usersplayers_display">
-            <ul class="small-block-grid-2 large-block-grid-4 no-margin">
-            {% for child in form %}
-                <li>
-                    {{ form_label(child) }}
-                    {{ form_widget(child) }}
-                </li>
-            {% endfor %}
-            </ul>
-        </div>
-        {{ form_errors(form) }}
-    </div>
-{% endspaceless %}
-{% endblock centaure_bundles_userbundle_checkboxaligntype_widget %}

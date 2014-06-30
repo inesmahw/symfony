@@ -10,12 +10,14 @@
 
 {{ "{% block page %}" }}
     <div class="row">
-        <div class="small-12 large-12 columns">
-            <h1 class="text-center title">{{ entity }} creation</h1>
+        <div class="small-12 columns">
+            <h1 class="text-center headerpagehome">
+                {{ entity }} creation
+            </h1>
         </div>
     </div>
     <div class="row">
-        <div class="small-12 large-12 columns">
+        <div class="small-12 columns">
             {{ '{{ form(form) }}' }}
 
             {% set hide_edit, hide_delete = true, true %}

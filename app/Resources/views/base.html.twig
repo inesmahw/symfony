@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <META HTTP-EQUIV="Content-Language" content="fr">
         <META NAME="language" content="French">
-        <META NAME="identifier-url" CONTENT="http://www.la-meilleure-boucherie.com">
+        <META NAME="identifier-url" CONTENT="{{ 'site.site'|trans }}">
         <META NAME="robots" CONTENT="index,follow">
         <META NAME="keywords" CONTENT="default">
         <META NAME="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -14,10 +14,12 @@
         <META NAME="description" CONTENT="{% block metadescription %}{% endblock metadescription %}">
         {% block stylesheets %}
             {% if app.environment == 'prod' %}
-                <link rel="stylesheet" href="{{ asset('built/css/min.css') }}"" />
+                {% stylesheets 'built/css/min.css' filter='cssrewrite' %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %}
             {% else %}
                 {% stylesheets 'app/css/css.css' 'app/css/app.css' filter='cssrewrite' %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
+                    <link rel="stylesheet" href="{{ asset_url }}" />
                 {% endstylesheets %}
             {% endif %}
         {% endblock %}
@@ -38,6 +40,13 @@
                             </div>
                         </div>
                     {% endfor %}
+                    {% for flashMessage in app.session.flashbag.get('errors') %}
+                        <div class="row full-width">
+                            <div class="large-12 columns text-center alert-box error">
+                                <h4>{{ flashMessage|trans }}</h4>
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endblock flashMessage %}
                 {% block page %}
                 {% endblock page %}
@@ -49,10 +58,12 @@
     {% endblock body %}
     {% block javascripts %}
         {% if app.environment == 'prod' %}
-            <script type="text/javascript" src="{{ asset('built/js/min.js') }}"></script>
+            {% javascripts 'built/js/min.js'%}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% else %}
             {% javascripts 'app/js/jquery.min.js' 'app/js/hammer.jquery.js'  'app/js/modernizr.js' 'app/js/app.js' 'app/js/foundation.min.js' 'app/js/foundation.topbar.js'%}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
+                <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endif %}
         <script>

@@ -1,19 +1,25 @@
-zimzim62000 project default
+zimzim62000 symfony2 project default
 =========
 
-With :
-FOS USER BUNDLE
-HWIOAUTHBUNDLE
-APYDATAGRIDBUNDLE
+### Version Symfony 2.5 -> dir 3.0
 
-require:
-PHP5, RVM , RPM
+### prebuilt with Css Framework : Foundation 5
 
-rpm install -g bower
-rpm install -g grunt-cli
+# Bundle Include :
+*FOS USER BUNDLE
+*HWIOAUTHBUNDLE
+*APYDATAGRIDBUNDLE
 
-gem install compass
-rpm install
-rvm install
 
-grunt
+## REQUIRED:
+*PHP5
+*RVM
+*RPM
+
+##HOW TO
+*rpm install -g bower
+*rpm install -g grunt-cli
+*gem install compass
+*rpm install
+*rvm install
+*grunt init

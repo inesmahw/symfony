@@ -1,5 +1,6 @@
 site:
     title : "Default site"
+    site: "default.site.fr"
 button:
     register: "s'inscrire"
     update: "modifier"

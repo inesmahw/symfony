@@ -38,6 +38,7 @@ Abstract class Login
 
         if (isset($user)) {
             $this->initialiseUser($user);
+
             return $user;
         }
 

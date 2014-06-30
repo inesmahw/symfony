@@ -62,6 +62,13 @@ module.exports = function(grunt){
                 files: [
                     {expand: true, cwd: 'app/Resources/public/', src: ['css/**'], dest: 'web/app/', filter: 'isFile'},
                 ]
+            },
+
+            init: {
+                files: [
+                    {src: 'bower_components/foundation/scss/foudation/_settings.scss', dest: 'app/Resources/public/scss/_settings.scss'},
+                    {src: 'bower_components/foundation/scss/foundation.scss', dest: 'app/Resources/public/scss/foundation.scss'},
+                ]
             }
 
         },
@@ -98,5 +105,6 @@ module.exports = function(grunt){
     grunt.registerTask('default', ['compass', 'autoprefixer', 'copy', 'jshint', 'uglify', 'cssmin']);
     grunt.registerTask('js', ['copy:js', 'jshint', 'uglify']);
     grunt.registerTask('css', ['compass', 'autoprefixer', 'copy:css', 'cssmin']);
+    grunt.registerTask('init', ['copy:init', 'default']);
 
 };

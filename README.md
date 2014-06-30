@@ -1,9 +1,19 @@
 zimzim62000 symfony2 project default
 =========
 
-### Version Symfony 2.5 -> dir 3.0
+Symfony V2.5 with dir 3.0
 
-### prebuilt with Css Framework : Foundation 5
+prebuilt with :
+* Css Framework
+    * Foundation 5
+    * Modernizr
+* JS :
+    * JQuery
+    * Hammer JS
+    * Modernizr
+    * foundation top-bar
+
+
 
 # Bundle Include :
 * FosUserBundle : https://github.com/FriendsOfSymfony/FOSUserBundle
@@ -11,11 +21,14 @@ zimzim62000 symfony2 project default
 * APYDataGridBundle : https://github.com/Abhoryo/APYDataGridBundle
 
 
+
 ## REQUIRED:
 
 * PHP5
 * RVM
 * RPM
+
+
 
 ##HOW TO
 

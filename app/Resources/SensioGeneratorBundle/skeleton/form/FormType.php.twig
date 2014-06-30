@@ -38,7 +38,7 @@ class {{ form_class }} extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}',
             'attr' => array(
-
+                'class' => 'zimzim-panel'
             ),
             'cascade_validation' => true
         ));

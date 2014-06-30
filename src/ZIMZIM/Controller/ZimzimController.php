@@ -8,7 +8,8 @@ use APY\DataGridBundle\Grid\Action\RowAction;
 use APY\DataGridBundle\Grid\Source\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ZimzimController extends Controller{
+class ZimzimController extends Controller
+{
 
     protected $grid;
 
@@ -33,14 +34,14 @@ class ZimzimController extends Controller{
             $rowAction = new RowAction("button.update", $data['edit']);
             $grid->addRowAction($rowAction);
         }
-        }
+
 
         if (isset($data['deletemass'])) {
             $massAction = new MassAction('button.delete', $data['deletemass']);
             $grid->addMassAction($massAction);
         }
 
-        if($setSource){
+        if ($setSource) {
             $grid->setSource($source);
         }
 
@@ -88,7 +89,7 @@ class ZimzimController extends Controller{
         );
     }
 
-    protected function displayError(message)
+    protected function displayError($message)
     {
         $this->addFlashMessage(
             array(

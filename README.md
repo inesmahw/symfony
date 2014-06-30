@@ -12,14 +12,16 @@ zimzim62000 symfony2 project default
 
 
 ## REQUIRED:
-*PHP5
-*RVM
-*RPM
+
+* PHP5
+* RVM
+* RPM
 
 ##HOW TO
-*rpm install -g bower
-*rpm install -g grunt-cli
-*gem install compass
-*rpm install
-*rvm install
-*grunt init
+
+* rpm install -g bower
+* rpm install -g grunt-cli
+* gem install compass
+* rpm install
+* rvm install
+* grunt init

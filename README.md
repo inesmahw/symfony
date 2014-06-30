@@ -6,20 +6,22 @@ zimzim62000 symfony2 project default
 ### prebuilt with Css Framework : Foundation 5
 
 # Bundle Include :
-*FOS USER BUNDLE
-*HWIOAUTHBUNDLE
-*APYDATAGRIDBUNDLE
+* FosUserBundle : https://github.com/FriendsOfSymfony/FOSUserBundle
+* HWIOAuthBundle : https://github.com/hwi/HWIOAuthBundle
+* APYDataGridBundle : https://github.com/Abhoryo/APYDataGridBundle
 
 
 ## REQUIRED:
-*PHP5
-*RVM
-*RPM
+
+* PHP5
+* RVM
+* RPM
 
 ##HOW TO
-*rpm install -g bower
-*rpm install -g grunt-cli
-*gem install compass
-*rpm install
-*rvm install
-*grunt init
+
+* rpm install -g bower
+* rpm install -g grunt-cli
+* gem install compass
+* rpm install
+* rvm install
+* grunt init

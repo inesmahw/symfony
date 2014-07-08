@@ -26,7 +26,7 @@ prebuilt with :
 
 * PHP5
 * RVM
-* RPM
+* NPM
 * Composer.phar
 
 
@@ -34,11 +34,11 @@ prebuilt with :
 ##HOW TO
 
 * php composer.phar install
-* rpm install -g bower
-* rpm install -g grunt-cli
+* npm install -g bower
+* npm install -g grunt-cli
 * gem install compass
-* rpm install
-* rvm install
+* npm install
+* bower install
 * grunt init once ! ( after that : grunt / grunt watch )
 
-
+ENJOY

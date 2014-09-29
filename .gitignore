@@ -23,6 +23,8 @@ zz
 web/app/js/ga.js
 app/Resources/public/js/ga.js
 
+app/Resources/public/css/*
+app/Resources/public/css/.gitkeep
 
 var/bootstrap.test.php
 

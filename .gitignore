@@ -41,3 +41,5 @@ web/app/css/*
 web/js/
 web/css/
 
+web/resources/category/
+!web/resources/category/.gitkeep

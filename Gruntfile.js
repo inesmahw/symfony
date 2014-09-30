@@ -20,6 +20,7 @@ module.exports = function(grunt){
                         'web/app/js/app.js',
                         'web/app/js/foundation.min.js',
                         'web/app/js/foundation.topbar.js',
+                        'web/app/js/foundation.offcanvas.js',
                         'web/app/js/ga.js'
                     ]
                 }
@@ -55,6 +56,7 @@ module.exports = function(grunt){
                     {src: 'bower_components/modernizr/modernizr.js', dest: 'web/app/js/modernizr.js'},
                     {src: 'bower_components/foundation/js/foundation.min.js', dest: 'web/app/js/foundation.min.js'},
                     {src: 'bower_components/foundation/js/foundation/foundation.topbar.js', dest: 'web/app/js/foundation.topbar.js'},
+                    {src: 'bower_components/foundation/js/foundation/foundation.offcanvas.js', dest: 'web/app/js/foundation.offcanvas.js'},
                 ]
             },
 

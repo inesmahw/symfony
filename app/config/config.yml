@@ -7,6 +7,9 @@ imports:
     - { resource: config/apy_data_grid.yml }
     - { resource: config/stof_doctrine.yml }
     - { resource: config/twig.yml }
+    - { resource: config/jms_i18n_routing.yml }
+    - { resource: config/service_doctrine_extensions.yml }
+
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
@@ -59,6 +62,17 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        mappings:
+            translatable:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Translatable\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+            tree:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
 
 # Swiftmailer Configuration
 swiftmailer:

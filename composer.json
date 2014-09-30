@@ -19,6 +19,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
 
+        "jms/i18n-routing-bundle": "1.1.1",
+
         "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "friendsofsymfony/rest-bundle": "1.4.*@dev",

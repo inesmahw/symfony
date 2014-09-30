@@ -1,7 +1,7 @@
 <?php
 
-exec('php app/console doctrine:schema:drop --force');
+exec('php bin/console doctrine:schema:drop --force');
 
-exec('php app/console doctrine:schema:update --force');
+exec('php bin/console doctrine:schema:update --force');
 
-exec('php app/console doctrine:fixtures:load -n');
+exec('php bin/console doctrine:fixtures:load -n');

@@ -69,7 +69,7 @@ module.exports = function(grunt){
             init: {
                 files: [
                     {src: 'bower_components/foundation/scss/foudation/_settings.scss', dest: 'app/Resources/public/scss/_settings.scss'},
-                    {src: 'bower_components/foundation/scss/foundation.scss', dest: 'app/Resources/public/scss/foundation.scss'},
+                    {src: 'bower_components/foundation/scss/foundation.scss', dest: 'app/Resources/public/scss/_foundation_mod.scss'},
                     {src: 'zz.save', dest: 'zz'},
                     {src: 'var/bootstrap.test.php.save', dest: 'var/bootstrap.test.php'},
                 ]

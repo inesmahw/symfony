@@ -8,6 +8,8 @@
     {{ "{{ '" ~ route_name_prefix ~ ".index.title'|trans }}" }}
 {{ "{% endblock title %}" }}
 
+    {{ "{% block offcanvas %}" }}
+    {{ "{% embed \"::navbar.html.twig\" %}" }}
 {{ "{% block page %}" }}
     <div class="row">
         <div class="small-12 columns">
@@ -47,4 +49,6 @@
         </div>
     </div>
 {{ "{% endblock %}" }}
+    {{ "{% endembed %} " }}
+    {{ "{% endblock offcanvas %}" }}
 {% endblock body %}

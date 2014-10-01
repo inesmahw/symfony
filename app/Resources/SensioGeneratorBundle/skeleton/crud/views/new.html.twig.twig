@@ -1,14 +1,15 @@
 {% block extends %}
-{{ "{% extends '::base.html.twig' %}" }}
+    {{ "{% extends '::base.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block title %}" }}
+    {{ "{% block title %}" }}
     {{ "{{ '" ~ route_name_prefix ~ ".index.title'|trans }}" }}
-{{ "{% endblock title %}" }}
+    {{ "{% endblock title %}" }}
 
-
-{{ "{% block page %}" }}
+    {{ "{% block offcanvas %}" }}
+    {{ "{% embed \"::navbar.html.twig\" %}" }}
+    {{ "{% block page %}" }}
     <div class="row">
         <div class="small-12 columns">
             <h1 class="text-center headerpagehome">
@@ -24,5 +25,7 @@
             {% include 'crud/views/others/record_actions.html.twig.twig' %}
         </div>
     </div>
-{{ "{% endblock %}" }}
+    {{ "{% endblock %}" }}
+    {{ "{% endembed %} " }}
+    {{ "{% endblock offcanvas %}" }}
 {% endblock body %}

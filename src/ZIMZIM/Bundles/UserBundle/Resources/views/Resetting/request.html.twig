@@ -1,5 +1,9 @@
 {% extends "::base.html.twig" %}
 
-{% block page %}
-    {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
-{% endblock page %}
+{% block offcanvas %}
+    {% embed "::navbar.html.twig" %}
+        {% block page %}
+            {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+        {% endblock page %}
+    {% endembed %}
+{% endblock offcanvas %}

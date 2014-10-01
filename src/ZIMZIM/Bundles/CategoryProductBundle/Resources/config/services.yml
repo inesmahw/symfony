@@ -1,4 +1,6 @@
 services:
-#    zimzim_bundles_category_product.example:
-#        class: ZIMZIM\Bundles\CategoryProductBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    #zimzim.twig.extension.categoryproduct_extension:
+    #    class: ZIMZIM\Bundles\CategoryProductBundle\TwigExtension\CategoryProductExtension
+    #    arguments: [@doctrine.orm.entity_manager ]
+    #    tags:
+    #        - { name: twig.extension }

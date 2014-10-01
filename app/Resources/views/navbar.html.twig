@@ -1,112 +1,107 @@
-<nav data-topbar="" class="top-bar">
-    <ul class="title-area">
-        <li class="name">
-            <a href="#" class="hide-for-small">
-                {{ 'views.navbar.title'|trans }}
-            </a>
-            <a href="#" class="show-for-small title-top-bar">
-                {{ 'views.navbar.title'|trans }}
-            </a>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="">{{ 'views.navbar.menu'|trans }}</a></li>
-    </ul>
+<div class="off-canvas-wrap docs-wrap container" data-offcanvas>
+    <div class="inner-wrap hack-inner-wrap" >
 
-    <section class="top-bar-section">
-        <ul class="right">
-            {% if is_granted('ROLE_USER') %}
-            <li class="divider"></li>
-            <li class="has-dropdown not-click">
-                <a href="#">{{ app.user.username }}</a>
-                <ul class="dropdown">
-                    <li class="title back js-generated">
-                        <a href="javascript:void(0);">
-                            {{ 'views.navbar.back'|trans }}
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="{{ path('fos_user_profile_show') }}">
-                            {{ 'views.navbar.edit'|trans }}
-                        </a>
-                    </li>
-                    <li class="">
-                        <a class="medium button" href="{{ path('fos_user_security_logout') }}">
-                            {{ 'views.navbar.logout'|trans }}
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                </ul>
-            </li>
-            <li class="divider"></li>
-        </ul>
-        {% else %}
-            <li class="divider"></li>
-            <li class="has-form">
-                <a class="medium button" href="{{ path('hwi_oauth_connect') }}">
-                    {{ 'views.navbar.login'|trans }}
-                </a>
-            </li>
-            </ul>
-        {% endif %}
-    </section>
-</nav>
-
-<div data-offcanvas="" class="off-canvas-wrap docs-wrap">
-    <div class="inner-wrap">
         <nav class="tab-bar">
             <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" aria-expanded="false"><span></span></a>
+                <a class="left-off-canvas-toggle menu-icon" href="#">
+                    <span></span>
+                </a>
             </section>
-
-            <section class="right tab-bar-section">
-                <div class="row text-center">
-                    <div class="medium-4 columns hide-for-small">
-                        <h1 class="title">Foundation 1</h1>
-                    </div>
-                    <div class="medium-4 columns hide-for-small">
-                        <h1 class="title">Foundation 2</h1>
-                    </div>
-                    <div class="medium-4 columns hide-for-small">
-                        <h1 class="title">Foundation 3</h1>
-                    </div>
-                    <div class="small-12 columns show-for-small">
-                        <h1 class="title">Foundation mini</h1>
-                    </div>
-                </div>
+            <section class="middle tab-bar-section">
+                    <span class="title">
+                        <a href="#" class="">
+                            {{ 'views.navbar.title'|trans }}
+                        </a>
+                    </span>
             </section>
-
         </nav>
-
         <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><label>Foundation</label></li>
-                <li><a href="#">The Psychohistorians</a></li>
-                <li><a href="#">The Encyclopedists</a></li>
-                <li><a href="#">The Mayors</a></li>
-                <li><a href="#">The Traders</a></li>
-                <li><a href="#">The Merchant Princes</a></li>
-                <li><label>Foundation and Empire</label></li>
-                <li><a href="#">The General</a></li>
-                <li><a href="#">The Mule</a></li>
-                <li><label>Second Foundation</label></li>
-                <li><a href="#">Search by the Mule</a></li>
-                <li><a href="#">Search by the Foundation</a></li>
+            <ul class="off-canvas-list text-center">
+                <li><label class="text-center">{{ 'views.navbar.menu'|trans }}</label></li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a class="" href="{{ path('zimzim_categoryproduct_category') }}">
+                            {{ 'views.navbar.category'|trans }}
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if categoryproduct_extension_categories is defined %}
+                    <li class="has-submenu"><a href="#"> {{ 'views.navbar.product'|trans }}</a>
+                        <ul class="left-submenu">
+                            <li class="back"><a href="#">{{ 'views.navbar.back'|trans }}</a></li>
+                            {% for category in categoryproduct_extension_categories %}
+                                <li>
+                                    <a class="" href="#">
+                                        {{ category.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="" href="#">
+                            {{ 'views.navbar.product'|trans }}
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a class="" href="#">
+                        {{ 'views.navbar.contact'|trans }}
+                    </a>
+                </li>
+
+                {% if is_granted('ROLE_USER') %}
+                    <li class="has-submenu"><a href="#"> {{ app.user.username }}</a>
+                        <ul class="left-submenu">
+                            <li class="back"><a href="#">{{ 'views.navbar.back'|trans }}</a></li>
+                            <li>
+                                <a href="{{ path('fos_user_profile_show') }}">
+                                    {{ 'views.navbar.usershow'|trans }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="medium button" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'views.navbar.logout'|trans }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="" href="{{ path('hwi_oauth_connect') }}">
+                            {{ 'views.navbar.loginregister'|trans }}
+                        </a>
+                    </li>
+                {% endif %}
+
             </ul>
         </aside>
-
         <section class="main-section">
-            <div class="row">
-                <div class="large-12 columns">
-                    <br>
-                    <h4>The Psychohistorians</h4>
-                    <p>Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
 
-                    <p>Using psychohistory, Seldon has discovered the declining nature of the Empire, angering the aristocratic members of the Committee of Public Safety, the de facto rulers of the Empire. The Committee considers Seldon's views and statements treasonous, and he is arrested along with young mathematician Gaal Dornick, who has arrived on Trantor to meet Seldon. Seldon is tried by the Committee and defends his beliefs, explaining his theories and predictions, including his belief that the Empire will collapse in 500 years and enter a 30,000-year dark age, to the Committee's members. </p>
+            {% block flashMessage %}
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="row full-width">
+                        <div class="large-12 columns text-center alert-box success">
+                            <h4>{{ flashMessage|trans }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for flashMessage in app.session.flashbag.get('errors') %}
+                    <div class="row full-width">
+                        <div class="large-12 columns text-center alert-box error">
+                            <h4>{{ flashMessage|trans }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endblock flashMessage %}
 
-                </div>
-            </div>
+            {% block page %}
+            {% endblock page %}
+
         </section>
-
         <a class="exit-off-canvas"></a>
-
     </div>
 </div>

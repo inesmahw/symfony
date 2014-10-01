@@ -4,6 +4,10 @@
     {{ 'views.user.profile.show.title'|trans }}
 {% endblock %}
 
-{% block page %}
-    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock page %}
+{% block offcanvas %}
+    {% embed "::navbar.html.twig" %}
+        {% block page %}
+            {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+        {% endblock page %}
+    {% endembed %}
+{% endblock offcanvas %}

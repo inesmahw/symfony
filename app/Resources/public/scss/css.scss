@@ -1,21 +1,24 @@
-@import "_settings";
 @import "normalize";
-@import "foundation";
+@import "_settings";
+@import "_foundation_mod";
+
+$grey: #333333;
+$heightfooter: 150px;
 
 html, body{
     height: 100%;
 }
+
 div.container{
     hight: auto;
     min-height: 100%;
-    padding-bottom: 150px;
+    padding-bottom: $heightfooter;
 }
 
-
 footer.footer{
-    background: $topbar-bg-color;
-    height: 150px;
-    margin-top: -150px;
+    background: $grey;
+    height: $heightfooter;
+    margin-top: -$heightfooter;
     clear:both;
     max-width: 100%;
     h4{
@@ -44,3 +47,17 @@ span.logo-small-tiers{
     background-position: 40px;
 }
 /**************************************/
+.nomargin {
+    margin: 0 !important;
+}
+.fullspace{
+    position: absolute;
+    top:0;
+    bottom: $heightfooter;
+    left:0;
+    right:0;
+}
+.hack-inner-wrap{
+    position: absolute;
+    min-height: 100%;
+}

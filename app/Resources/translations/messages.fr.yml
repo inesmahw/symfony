@@ -19,6 +19,12 @@ views:
         login: "Connexion"
         register: "Inscription"
         logout: "Déconnexion"
+        back: "Retour"
+        loginregister: "Connexion / Inscription"
+        usershow: "Mon compte"
+        contact: "Contact"
+        product: "Nos produits"
+        category: "Category"
     HWIOAuthBundle:
         connect:
             login:

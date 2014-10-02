@@ -4,10 +4,7 @@
     {{ 'views.user.profile.edit.title'|trans }}
 {% endblock %}
 
-{% block offcanvas %}
-    {% embed "::navbar.html.twig" %}
-        {% block page %}
-            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-        {% endblock page %}
-    {% endembed %}
-{% endblock offcanvas %}
+
+{% block page %}
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+{% endblock page %}

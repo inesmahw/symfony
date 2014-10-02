@@ -5,59 +5,98 @@
 $grey: #333333;
 $heightfooter: 150px;
 
-html, body{
+html, body {
     height: 100%;
 }
 
-div.container{
+div.container {
     hight: auto;
     min-height: 100%;
     padding-bottom: $heightfooter;
 }
 
-footer.footer{
+footer.footer {
     background: $grey;
     height: $heightfooter;
     margin-top: -$heightfooter;
-    clear:both;
+    clear: both;
     max-width: 100%;
-    h4{
+    h4 {
         color: #FFF;
         padding: 2rem;
     }
 }
 
 /********* logo tiers ***********/
-span.logo-small-tiers{
+span.logo-small-tiers {
     width: 40px;
     height: 40px;
     background-size: 120px 40px;
     display: inline-block;
 }
-.image-facebook{
+
+.image-facebook {
     background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
     background-position: 0;
 }
-.image-google{
+
+.image-google {
     background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
     background-position: 80px;
 }
-.image-twitter{
+
+.image-twitter {
     background-image: url('../../bundles/zimzimbundlesuser/images/logotiers.png');
     background-position: 40px;
 }
-/**************************************/
+
+/************************ Tools **************/
 .nomargin {
     margin: 0 !important;
 }
-.fullspace{
-    position: absolute;
-    top:0;
-    bottom: $heightfooter;
-    left:0;
-    right:0;
+
+.vertical-middle {
+    vertical-align: middle;
 }
-.hack-inner-wrap{
-    position: absolute;
-    min-height: 100%;
+
+.width-100, .full-width {
+    width: 100%;
+    max-width: 100%;
+}
+
+/************************ Top bar **************/
+nav.top-bar span.title {
+    line-height: 45px;
+    padding-left: 1rem;
+    height: 45px;
+    a {
+        color: $white;
+    }
+}
+/************** COLOR **********************/
+.bg-lightwhite{
+    background: $lightwhite;
+}
+.border-lightwhite{
+    border:1px SOLID $lightwhite;
+}
+/***************** category *******************/
+h1.title-category{
+    padding: 1rem 0 0.5rem 0;
+    font-weight: bold;
+}
+.fake-h1-category{
+    height: $h1-font-size;
+    margin-top: $header-top-margin;
+    margin-bottom: $header-bottom-margin;
+    display: block;
+    padding: 1rem 0 0.5rem;
+}
+.case-category{
+    background: $lightwhite;
+    border:1px DASHED $black;
+}
+/************* image **************/
+img.img-medium{
+
 }

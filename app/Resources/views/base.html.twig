@@ -29,15 +29,39 @@
 <body>
 {% block body %}
     {% block container %}
+        <div class="container" id="container" {% block stylecontainer %}{% endblock stylecontainer %}>
 
-        {% block offcanvas %}
+        {% block navbar %}
             {% include '::navbar.html.twig' %}
-        {% endblock offcanvas %}
+        {% endblock navbar %}
 
+        {% block flashMessage %}
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="row full-width">
+                    <div class="large-12 columns text-center alert-box success">
+                        <h4>{{ flashMessage|trans }}</h4>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('errors') %}
+                <div class="row full-width">
+                    <div class="large-12 columns text-center alert-box error">
+                        <h4>{{ flashMessage|trans }}</h4>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endblock flashMessage %}
+
+        {% block page %}
+        {% endblock page %}
+
+        </div>
     {% endblock container %}
+
     {% block footer %}
         {% include '::footer.html.twig' %}
     {% endblock footer %}
+
 {% endblock body %}
 {% block javascripts %}
     {% if app.environment == 'prod' %}

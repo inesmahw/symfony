@@ -1,0 +1,108 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {% if entity.title != null %}
+        {{ entity.title }}
+    {% else %}
+        {{ 'views.categoryproduct.category.listid.title'|trans }}
+    {% endif %}
+{% endblock title %}
+
+{% block metadescription %}
+    {% if entity.title != null %}
+        {{ entity.title }}
+    {% else %}
+        {{ 'views.categoryproduct.category.listid.desc'|trans }}
+    {% endif %}
+{% endblock metadescription %}
+
+
+{% block stylecontainer %}
+{% endblock stylecontainer %}
+
+{% block page %}
+
+    {% if entity.parents|length != 0 %}
+        <nav class="breadcrumbs">
+            {% for parent in entity.parents if parent != null %}
+                <a {% if parent.id == entity.id %} class="current"{% endif %}
+                        href="{{ path('zimzim_categoryproduct_category_listid', {'id':parent.id}) }}">
+                    {{ parent.name }}
+                </a>
+            {% endfor %}
+        </nav>
+    {% endif %}
+
+    <div class="row">
+        <div class="small-10 small-centered columns">
+            <div class="row">
+                {% if entity.path != null %}
+                    <div class="medium-12 columns">
+                        <h1 class="text-center title-category">
+                            {{ entity.name }}
+                        </h1>
+                    </div>
+                {% else %}
+                    <div class="medium-12 columns">
+                        <h1 class="text-center title-category">
+                            {{ entity.name }}
+                        </h1>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if entity.content != null %}
+        {{ entity.content|raw }}
+    {% endif %}
+
+    <hr>
+
+    <div class="row full-width">
+        <div class="small-10 small-centered columns">
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+                {% for child in entity.children %}
+                    <li>
+                        <div class="row">
+                            <div class="small-10 small-centered columns">
+                                <div class="row case-category">
+                                    <div class="small-6 small-centered columns text-center">
+                                        {% if child.webpath != null %}
+                                            <img class="img-medium" src="/{{ child.webpath }}" alt="{{ child.description }}"/>
+                                        {% endif %}
+                                    </div>
+                                    <div class="small-12 columns">
+                                        <h3 class="text-center">
+                                            <a href="{{ path('zimzim_categoryproduct_category_listid', {'id':child.id}) }}">
+                                                {{ child.name }}
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    {% if child.description != null %}
+                                        <div class="small-12 columns">
+                                            <p>
+                                                {{ child.description }}
+                                            </p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% if entity.children|length == 0 %}
+
+        <div class="row">
+            <div class="small-10 small-centered columns panel">
+                &nbsp;
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock page %}

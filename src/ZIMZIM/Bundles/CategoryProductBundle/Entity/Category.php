@@ -6,6 +6,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
+use APY\DataGridBundle\Grid\Mapping as GRID;
 
 
 /**
@@ -24,6 +25,7 @@ class Category implements Translatable
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $id;
 
@@ -34,14 +36,18 @@ class Category implements Translatable
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="name", type="string", length=255)
+     * @GRID\Column(operatorsVisible=false)
      */
     private $name;
+
+
 
     /**
      * @var string
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     * @GRID\Column(operatorsVisible=false)
      */
     private $title;
 
@@ -50,6 +56,7 @@ class Category implements Translatable
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="description", type="text", nullable=true)
+     * @GRID\Column(operatorsVisible=false)
      */
     private $description;
 
@@ -59,6 +66,7 @@ class Category implements Translatable
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="content", type="text", nullable=true)
+     * @GRID\Column(operatorsVisible=false)
      */
     private $content;
 
@@ -67,6 +75,7 @@ class Category implements Translatable
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $createdAt;
 
@@ -75,6 +84,7 @@ class Category implements Translatable
      *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $updatedAt;
 
@@ -96,6 +106,7 @@ class Category implements Translatable
     
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @GRID\Column(operatorsVisible=false, safe=false)
      */
     public $path;
 
@@ -161,29 +172,35 @@ class Category implements Translatable
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $lft;
 
     /**
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $lvl;
 
     /**
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $rgt;
 
     /**
      * @Gedmo\TreeRoot
      * @ORM\Column(name="root", type="integer", nullable=true)
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $root;
 
     /**
      * @Gedmo\TreeParent
+     *
+     * @GRID\Column(operatorsVisible=false, field="parent.name", title="parent")
      *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumn(name="id_parent", referencedColumnName="id", onDelete="CASCADE")
@@ -553,4 +570,17 @@ class Category implements Translatable
     public function __toString(){
         return $this->name;
     }
+
+    public function getParents(){
+
+        $parents = array();
+        $parents[] = $this;
+        $object = $this->getParent();
+        while($object !== null){
+            $parents[] = $object;
+            $object = $object->getParent();
+        }
+        return $parents;
+    }
+
 }

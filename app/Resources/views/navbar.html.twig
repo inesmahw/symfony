@@ -1,107 +1,41 @@
-<div class="off-canvas-wrap docs-wrap container" data-offcanvas>
-    <div class="inner-wrap hack-inner-wrap" >
+{% block navbar %}
 
-        <nav class="tab-bar">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" href="#">
-                    <span></span>
-                </a>
-            </section>
-            <section class="middle tab-bar-section">
+    <div class="sticky">
+        <nav data-options="sticky_on: large" role="navigation" data-topbar="" class="top-bar">
+            <ul class="title-area">
+                <li class="name">
                     <span class="title">
-                        <a href="#" class="">
+                        <a href="#">
+                            <span class="icon-medium icon-home vertical-middle"></span>
                             {{ 'views.navbar.title'|trans }}
                         </a>
                     </span>
-            </section>
-        </nav>
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list text-center">
-                <li><label class="text-center">{{ 'views.navbar.menu'|trans }}</label></li>
-
-                {% if is_granted('ROLE_ADMIN') %}
+                </li>
+                <li class="toggle-topbar menu-icon">
+                    <a href="#">
+                        <span>{{ 'views.navbar.menu'|trans }}</span>
+                    </a>
+                </li>
+            </ul>
+            <section class="top-bar-section">
+                <ul class="right">
+                    <li class="divider hide-for-small"></li>
                     <li>
-                        <a class="" href="{{ path('zimzim_categoryproduct_category') }}">
-                            {{ 'views.navbar.category'|trans }}
-                        </a>
-                    </li>
-                {% endif %}
-
-                {% if categoryproduct_extension_categories is defined %}
-                    <li class="has-submenu"><a href="#"> {{ 'views.navbar.product'|trans }}</a>
-                        <ul class="left-submenu">
-                            <li class="back"><a href="#">{{ 'views.navbar.back'|trans }}</a></li>
-                            {% for category in categoryproduct_extension_categories %}
-                                <li>
-                                    <a class="" href="#">
-                                        {{ category.name }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% else %}
-                    <li>
-                        <a class="" href="#">
+                        <a class="" href="{{ path('zimzim_categoryproduct_category_listid', {'id':1}) }}">
+                            <span class="icon-medium icon-file vertical-middle"></span>
                             {{ 'views.navbar.product'|trans }}
                         </a>
                     </li>
-                {% endif %}
-                <li>
-                    <a class="" href="#">
-                        {{ 'views.navbar.contact'|trans }}
-                    </a>
-                </li>
-
-                {% if is_granted('ROLE_USER') %}
-                    <li class="has-submenu"><a href="#"> {{ app.user.username }}</a>
-                        <ul class="left-submenu">
-                            <li class="back"><a href="#">{{ 'views.navbar.back'|trans }}</a></li>
-                            <li>
-                                <a href="{{ path('fos_user_profile_show') }}">
-                                    {{ 'views.navbar.usershow'|trans }}
-                                </a>
-                            </li>
-                            <li>
-                                <a class="medium button" href="{{ path('fos_user_security_logout') }}">
-                                    {{ 'views.navbar.logout'|trans }}
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                {% else %}
                     <li>
-                        <a class="" href="{{ path('hwi_oauth_connect') }}">
-                            {{ 'views.navbar.loginregister'|trans }}
+                        <a class="" href="#">
+                            <span class="icon-medium icon-address-book vertical-middle"></span>
+                            {{ 'views.navbar.contact'|trans }}
                         </a>
                     </li>
-                {% endif %}
-
-            </ul>
-        </aside>
-        <section class="main-section">
-
-            {% block flashMessage %}
-                {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="row full-width">
-                        <div class="large-12 columns text-center alert-box success">
-                            <h4>{{ flashMessage|trans }}</h4>
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for flashMessage in app.session.flashbag.get('errors') %}
-                    <div class="row full-width">
-                        <div class="large-12 columns text-center alert-box error">
-                            <h4>{{ flashMessage|trans }}</h4>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endblock flashMessage %}
-
-            {% block page %}
-            {% endblock page %}
-
-        </section>
-        <a class="exit-off-canvas"></a>
+                </ul>
+            </section>
+        </nav>
     </div>
-</div>
+
+
+{% endblock navbar %}

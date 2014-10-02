@@ -21,17 +21,28 @@ class CategoryController extends ZimzimController
      */
     public function indexAction()
     {
-    $data = array(
-        'entity'     => 'ZIMZIMBundlesCategoryProductBundle:Category',
-        'show'       => 'zimzim_categoryproduct_category_show',
-        'edit'       => 'zimzim_categoryproduct_category_edit'
-    );
+        $data = array(
+            'entity' => 'ZIMZIMBundlesCategoryProductBundle:Category',
+            'show' => 'zimzim_categoryproduct_category_show',
+            'edit' => 'zimzim_categoryproduct_category_edit'
+        );
 
-    $this->gridList($data);
+        $this->gridList($data);
 
+        $source = $this->grid->getSource();
 
-   return $this->grid->getGridResponse('ZIMZIMBundlesCategoryProductBundle:Category:index.html.twig');
+        $source->manipulateRow(
+            function ($row) {
+                if ($row->getEntity()->getPath() !== null) {
+                    $row->setField('path', '<img style="height:50px;"  src="/' . $row->getEntity()->getWebPath() . '"/>');
+                }
+                return $row;
+            }
+        );
+
+        return $this->grid->getGridResponse('ZIMZIMBundlesCategoryProductBundle:Category:index.html.twig');
     }
+
     /**
      * Creates a new Category entity.
      *
@@ -49,28 +60,37 @@ class CategoryController extends ZimzimController
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zimzim_categoryproduct_category_show', array('id' => $entity->getId())));
+            return $this->redirect(
+                $this->generateUrl('zimzim_categoryproduct_category_show', array('id' => $entity->getId()))
+            );
         }
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Category:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to create a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a Category entity.
+     *
+     * @param Category $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(Category $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('zimzim_categoryproduct_category_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new CategoryType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('zimzim_categoryproduct_category_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'button.create'));
 
@@ -84,12 +104,15 @@ class CategoryController extends ZimzimController
     public function newAction()
     {
         $entity = new Category();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Category:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -108,10 +131,13 @@ class CategoryController extends ZimzimController
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Category:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:show.html.twig',
+            array(
+                'entity' => $entity,
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -131,31 +157,42 @@ class CategoryController extends ZimzimController
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Category:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to edit a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Category entity.
+     *
+     * @param Category $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Category $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('zimzim_categoryproduct_category_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new CategoryType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl(
+                        'zimzim_categoryproduct_category_update',
+                        array('id' => $entity->getId())
+                    ),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'button.update'));
 
         return $form;
     }
+
     /**
      * Edits an existing Category entity.
      *
@@ -175,18 +212,22 @@ class CategoryController extends ZimzimController
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-			$this->updateSuccess();
+            $this->updateSuccess();
             $em->flush();
 
             return $this->redirect($this->generateUrl('zimzim_categoryproduct_category_edit', array('id' => $id)));
         }
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Category:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
+
     /**
      * Deletes a Category entity.
      *
@@ -225,7 +266,25 @@ class CategoryController extends ZimzimController
             ->setAction($this->generateUrl('zimzim_categoryproduct_category_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'button.delete'))
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+
+    public function listCategoryByIdAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Category entity.');
+        }
+
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Category:listid.html.twig',
+            array(
+                'entity' => $entity,
+            )
+        );
     }
 }

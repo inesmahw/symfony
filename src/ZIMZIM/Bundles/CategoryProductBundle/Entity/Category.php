@@ -41,7 +41,6 @@ class Category implements Translatable
     private $name;
 
 
-
     /**
      * @var string
      *
@@ -103,7 +102,7 @@ class Category implements Translatable
      * @Assert\File(maxSize="6000000")
      */
     public $file;
-    
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @GRID\Column(operatorsVisible=false, safe=false)
@@ -112,22 +111,35 @@ class Category implements Translatable
 
     public function getAbsolutePath()
     {
-        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }
 
     public function getWebPath()
     {
-        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->path;
     }
 
     protected function getUploadRootDir()
     {
-        return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+        return __DIR__ . '/../../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         return 'resources/category';
+    }
+
+
+    public function testUpload()
+    {
+
+        if (isset($this->file)) {
+            if ($this->file !== null) {
+                $this->preUpload();
+
+                $this->upload();
+            }
+        }
     }
 
     /**
@@ -136,8 +148,10 @@ class Category implements Translatable
      */
     public function preUpload()
     {
-        if (null !== $this->file) {
-            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        if (isset($this->file)) {
+            if (null !== $this->file) {
+                $this->path = sha1(uniqid(mt_rand(), true)) . '.' . $this->file->guessExtension();
+            }
         }
     }
 
@@ -147,12 +161,14 @@ class Category implements Translatable
      */
     public function upload()
     {
-        if (null === $this->file) {
-            return;
-        }
-        $this->file->move($this->getUploadRootDir(), $this->path);
+        if (isset($this->file)) {
+            if (null === $this->file) {
+                return;
+            }
+            $this->file->move($this->getUploadRootDir(), $this->path);
 
-        unset($this->file);
+            unset($this->file);
+        }
     }
 
     /**
@@ -228,7 +244,7 @@ class Category implements Translatable
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -251,7 +267,7 @@ class Category implements Translatable
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -274,7 +290,7 @@ class Category implements Translatable
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -297,7 +313,7 @@ class Category implements Translatable
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -320,7 +336,7 @@ class Category implements Translatable
     /**
      * Get image
      *
-     * @return integer 
+     * @return integer
      */
     public function getImage()
     {
@@ -343,7 +359,7 @@ class Category implements Translatable
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -366,7 +382,7 @@ class Category implements Translatable
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -389,7 +405,7 @@ class Category implements Translatable
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -412,7 +428,7 @@ class Category implements Translatable
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -435,7 +451,7 @@ class Category implements Translatable
     /**
      * Get lft
      *
-     * @return integer 
+     * @return integer
      */
     public function getLft()
     {
@@ -458,7 +474,7 @@ class Category implements Translatable
     /**
      * Get lvl
      *
-     * @return integer 
+     * @return integer
      */
     public function getLvl()
     {
@@ -481,7 +497,7 @@ class Category implements Translatable
     /**
      * Get rgt
      *
-     * @return integer 
+     * @return integer
      */
     public function getRgt()
     {
@@ -504,7 +520,7 @@ class Category implements Translatable
     /**
      * Get root
      *
-     * @return integer 
+     * @return integer
      */
     public function getRoot()
     {
@@ -527,7 +543,7 @@ class Category implements Translatable
     /**
      * Get parent
      *
-     * @return \ZIMZIM\Bundles\CategoryProductBundle\Entity\Category 
+     * @return \ZIMZIM\Bundles\CategoryProductBundle\Entity\Category
      */
     public function getParent()
     {
@@ -560,26 +576,29 @@ class Category implements Translatable
     /**
      * Get children
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getChildren()
     {
         return $this->children;
     }
 
-    public function __toString(){
+    public function __toString()
+    {
         return $this->name;
     }
 
-    public function getParents(){
+    public function getParents()
+    {
 
         $parents = array();
         $parents[] = $this;
         $object = $this->getParent();
-        while($object !== null){
+        while ($object !== null) {
             $parents[] = $object;
             $object = $object->getParent();
         }
+
         return $parents;
     }
 

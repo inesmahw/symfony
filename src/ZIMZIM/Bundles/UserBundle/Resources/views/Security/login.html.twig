@@ -21,7 +21,7 @@
                            value="{{ last_username }}" required="required"/>
                 </label>
                 {% if error %}
-                    <small class="error">{{ error|trans({}, 'FOSUserBundle') }}</small>
+                    <small class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</small>
                 {% endif %}
                 <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}
                     <input type="password" id="password" name="_password" required="required"/>

@@ -212,6 +212,7 @@ class CategoryController extends ZimzimController
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->testUpload();
             $this->updateSuccess();
             $em->flush();
 

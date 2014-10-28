@@ -22,9 +22,9 @@
 
 {% block page %}
 
-    {% if entity.parents|length != 0 %}
+    {% if entity.Parents|length != 0 %}
         <nav class="breadcrumbs">
-            {% for parent in entity.parents if parent != null %}
+            {% for parent in entity.Parents if parent != null %}
                 <a {% if parent.id == entity.id %} class="current"{% endif %}
                         href="{{ path('zimzim_categoryproduct_category_listid', {'id':parent.id}) }}">
                     {{ parent.name }}

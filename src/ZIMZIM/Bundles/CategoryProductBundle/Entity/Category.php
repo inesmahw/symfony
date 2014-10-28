@@ -97,6 +97,11 @@ class Category implements Translatable
         $this->locale = $locale;
     }
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ZIMZIM\Bundles\CategoryProductBundle\Entity\Product", inversedBy="categories")
+     **/
+    private $products;
+
     /******************************** IMAGE **************************/
     /**
      * @Assert\File(maxSize="6000000")
@@ -132,7 +137,6 @@ class Category implements Translatable
 
     public function testUpload()
     {
-
         if (isset($this->file)) {
             if ($this->file !== null) {
                 $this->preUpload();
@@ -239,6 +243,7 @@ class Category implements Translatable
     public function __construct()
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -590,16 +595,31 @@ class Category implements Translatable
 
     public function getParents()
     {
-
         $parents = array();
         $parents[] = $this;
         $object = $this->getParent();
         while ($object !== null) {
-            $parents[] = $object;
+            array_unshift($parents, $object);
             $object = $object->getParent();
         }
-
         return $parents;
     }
 
+    /**
+     * @param mixed $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 }

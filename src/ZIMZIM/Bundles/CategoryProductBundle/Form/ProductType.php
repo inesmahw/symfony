@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CategoryType extends AbstractType
+class ProductType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -18,10 +18,15 @@ class CategoryType extends AbstractType
             ->add('name')
             ->add('title')
             ->add('description')
-            ->add('content', null, array('attr' => array('contenteditable' => true)))
-            ->add('file')
-            ->add('products')
-            ->add('parent', null, array('empty_value' => ''))
+            ->add('feature')
+            ->add('listing')
+            ->add('specification')
+            ->add('homepage')
+            ->add('file1')
+            ->add('file2')
+            ->add('file3')
+            ->add('file4')
+            ->add('categories')
         ;
     }
     
@@ -31,7 +36,7 @@ class CategoryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ZIMZIM\Bundles\CategoryProductBundle\Entity\Category',
+            'data_class' => 'ZIMZIM\Bundles\CategoryProductBundle\Entity\Product',
             'attr' => array(
                 'class' => 'zimzim-panel'
             ),
@@ -44,6 +49,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'zimzim_bundles_categoryproductbundle_categorytype';
+        return 'zimzim_bundles_categoryproductbundle_producttype';
     }
 }

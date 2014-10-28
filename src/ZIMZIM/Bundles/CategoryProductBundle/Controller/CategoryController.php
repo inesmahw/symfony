@@ -19,7 +19,7 @@ class CategoryController extends ZimzimController
      * Lists all Category entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $data = array(
             'entity' => 'ZIMZIMBundlesCategoryProductBundle:Category',
@@ -29,12 +29,30 @@ class CategoryController extends ZimzimController
 
         $this->gridList($data);
 
+        $em = $this->container->get('doctrine.orm.entity_manager');
+
+        $locale = $request->getLocale();
+        $source = $this->grid->getSource();
+        $TranslatableRepository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
+
+        $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->getList(
+            $source,
+            $locale
+        );
+
         $source = $this->grid->getSource();
 
         $source->manipulateRow(
-            function ($row) {
+            function ($row) use($em, $locale, $TranslatableRepository){
                 if ($row->getEntity()->getPath() !== null) {
                     $row->setField('path', '<img style="height:50px;"  src="/' . $row->getEntity()->getWebPath() . '"/>');
+                }
+                $translations = $TranslatableRepository->findTranslations($row->getEntity());
+                if(isset($translations[$locale])){
+                    $row->setField('name', $translations[$locale]['name']);
+                    $row->setField('title', $translations[$locale]['title']);
+                    $row->setField('description', $translations[$locale]['description']);
+                    $row->setField('content', $translations[$locale]['content']);
                 }
                 return $row;
             }

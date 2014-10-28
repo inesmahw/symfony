@@ -12,4 +12,13 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class CategoryRepository extends NestedTreeRepository
 {
+    public function getList($source, $locale)
+    {
+        $tableAlias = $source->getTableAlias();
+        $source->manipulateQuery(
+            function ($query) use ($tableAlias, $locale) {
+            }
+        );
+        return $source;
+    }
 }

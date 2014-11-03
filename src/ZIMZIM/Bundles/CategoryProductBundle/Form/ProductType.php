@@ -21,7 +21,7 @@ class ProductType extends AbstractType
             ->add('feature')
             ->add('listing')
             ->add('specification')
-            ->add('homepage')
+            ->add('homepage', null, array('required' => false))
             ->add('file1')
             ->add('file2')
             ->add('file3')

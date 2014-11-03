@@ -43,3 +43,6 @@ web/css/
 
 web/resources/category/
 !web/resources/category/.gitkeep
+
+web/resources/product/
+!web/resources/product/.gitkeep

@@ -26,7 +26,7 @@ class ProductType extends AbstractType
             ->add('file2')
             ->add('file3')
             ->add('file4')
-            ->add('categories')
+            ->add('categories', null, array('attr'=> array('class' => 'select-multiple')))
         ;
     }
     

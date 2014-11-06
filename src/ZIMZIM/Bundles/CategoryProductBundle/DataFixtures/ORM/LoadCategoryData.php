@@ -14,19 +14,19 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $om)
     {
         $zimzim = new Category();
-        $zimzim->setName('Produit');
+        $zimzim->setName('Home');
         $om->persist($zimzim);
-        $this->addReference('produit', $zimzim);
+        $this->addReference('Home', $zimzim);
 
         $zimzim = new Category();
         $zimzim->setName('Intérieur');
-        $zimzim->setParent($this->getReference('produit'));
+        $zimzim->setParent($this->getReference('Home'));
         $om->persist($zimzim);
         $this->addReference('interieur', $zimzim);
 
         $zimzim = new Category();
         $zimzim->setName('Extérieur');
-        $zimzim->setParent($this->getReference('produit'));
+        $zimzim->setParent($this->getReference('Home'));
         $om->persist($zimzim);
         $this->addReference('exterieur', $zimzim);
 

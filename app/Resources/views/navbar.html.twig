@@ -21,16 +21,40 @@
                 <ul class="right">
                     <li class="divider hide-for-small"></li>
                     <li>
-                        <a class="" href="{{ path('zimzim_categoryproduct_category_listid', {'id':1}) }}">
+                        <a class="" href="{{ path('zimzim_categoryproduct_category_listslugnull') }}">
                             <span class="icon-medium icon-file vertical-middle"></span>
                             {{ 'views.navbar.product'|trans }}
                         </a>
                     </li>
+                    <li class="divider"></li>
                     <li>
                         <a class="" href="#">
                             <span class="icon-medium icon-address-book vertical-middle"></span>
                             {{ 'views.navbar.contact'|trans }}
                         </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="has-dropdown">
+                        <a href="#">
+                            <span class="icon-medium icon-flag vertical-middle"></span>
+                        </a>
+                        <ul class="dropdown">
+                            <li class="title back js-generated">
+                                <h5>
+                                    <a href="javascript:void(0)">
+                                        {{ 'views.navbar.back'|trans }}
+                                    </a>
+                                </h5>
+                            </li>
+                            {% set tabLang = ['fr','en','ru','al','es'] %}
+                            {% for lang in tabLang %}
+                                <li class="text-center">
+                                    <a class="" href="#">
+                                        {{ lang }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
                 </ul>
             </section>

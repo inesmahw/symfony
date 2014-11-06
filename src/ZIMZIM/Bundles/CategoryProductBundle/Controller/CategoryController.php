@@ -2,8 +2,8 @@
 
 namespace ZIMZIM\Bundles\CategoryProductBundle\Controller;
 
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\Request;
-use ZIMZIM\Controller\ZimzimController;
 
 use ZIMZIM\Bundles\CategoryProductBundle\Entity\Category;
 use ZIMZIM\Bundles\CategoryProductBundle\Form\CategoryType;
@@ -12,7 +12,7 @@ use ZIMZIM\Bundles\CategoryProductBundle\Form\CategoryType;
  * Category controller.
  *
  */
-class CategoryController extends ZimzimController
+class CategoryController extends MainController
 {
 
     /**
@@ -27,38 +27,7 @@ class CategoryController extends ZimzimController
             'edit' => 'zimzim_categoryproduct_category_edit'
         );
 
-        $this->gridList($data);
-
-        $em = $this->container->get('doctrine.orm.entity_manager');
-
-        $locale = $request->getLocale();
-        $source = $this->grid->getSource();
-        $TranslatableRepository = $em->getRepository('Gedmo\Translatable\Entity\Translation');
-
-        $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->getList(
-            $source,
-            $locale
-        );
-
-        $source = $this->grid->getSource();
-
-        $source->manipulateRow(
-            function ($row) use($em, $locale, $TranslatableRepository){
-                if ($row->getEntity()->getPath() !== null) {
-                    $row->setField('path', '<img style="height:50px;"  src="/' . $row->getEntity()->getWebPath() . '"/>');
-                }
-                $translations = $TranslatableRepository->findTranslations($row->getEntity());
-                if(isset($translations[$locale])){
-                    $row->setField('name', $translations[$locale]['name']);
-                    $row->setField('title', $translations[$locale]['title']);
-                    $row->setField('description', $translations[$locale]['description']);
-                    $row->setField('content', $translations[$locale]['content']);
-                }
-                return $row;
-            }
-        );
-
-        return $this->grid->getGridResponse('ZIMZIMBundlesCategoryProductBundle:Category:index.html.twig');
+        return $this->gridList($data);
     }
 
     /**
@@ -289,11 +258,15 @@ class CategoryController extends ZimzimController
     }
 
 
-    public function listCategoryByIdAction($id){
-
+    public function listCategoryBySlugAction($slug = null){
+        
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->find($id);
+        if(isset($slug)){
+            $entity = $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->findOneBy(array('slug' => $slug));
+        }else{
+            $entity = $em->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->find(1);
+        }
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');

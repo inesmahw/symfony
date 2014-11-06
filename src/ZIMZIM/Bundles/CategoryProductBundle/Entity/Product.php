@@ -12,10 +12,10 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
  * Product
  *
  * @ORM\Table(name="default_product")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ZIMZIM\Bundles\CategoryProductBundle\Entity\ProductRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Product implements Translatable
+class Product implements Translatable, iApyDataGridFilePath
 {
     /**
      * @var integer
@@ -219,6 +219,72 @@ class Product implements Translatable
     {
         return 'resources/product';
     }
+
+    /**
+     * @param mixed $path4
+     */
+    public function setPath4($path4)
+    {
+        $this->path4 = $path4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath4()
+    {
+        return $this->path4;
+    }
+
+    /**
+     * @param mixed $path2
+     */
+    public function setPath2($path2)
+    {
+        $this->path2 = $path2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath2()
+    {
+        return $this->path2;
+    }
+
+    /**
+     * @param mixed $path3
+     */
+    public function setPath3($path3)
+    {
+        $this->path3 = $path3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath3()
+    {
+        return $this->path3;
+    }
+
+    /**
+     * @param mixed $path1
+     */
+    public function setPath1($path1)
+    {
+        $this->path1 = $path1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPath1()
+    {
+        return $this->path1;
+    }
+
+
 
     /*************************************************************************************************/
 
@@ -553,5 +619,8 @@ class Product implements Translatable
         }
     }
 
+    public function getListAttrImg(){
+        return array('path1', 'path2', 'path3', 'path4');
+    }
 }
 

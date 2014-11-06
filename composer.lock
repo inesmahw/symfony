@@ -412,12 +412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "a67db17b3d5bf373ba7a827db52dd0c7066cb08a"
+                "reference": "6458b0bd6e62817e961a9611959a67b5f8622b59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a67db17b3d5bf373ba7a827db52dd0c7066cb08a",
-                "reference": "a67db17b3d5bf373ba7a827db52dd0c7066cb08a",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6458b0bd6e62817e961a9611959a67b5f8622b59",
+                "reference": "6458b0bd6e62817e961a9611959a67b5f8622b59",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-10-27 17:14:07"
+            "time": "2014-11-05 14:17:28"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -874,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3"
+                "reference": "76e1a469ef3c4af4ef9d60c769822d4283809217"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3",
-                "reference": "20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/76e1a469ef3c4af4ef9d60c769822d4283809217",
+                "reference": "76e1a469ef3c4af4ef9d60c769822d4283809217",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-10-23 05:01:59"
+            "time": "2014-11-05 12:19:29"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -2243,17 +2243,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.7",
+            "version": "v3.0.8",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "3d7b900225882063cf179ce1d41bb8b1450a5a17"
+                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/3d7b900225882063cf179ce1d41bb8b1450a5a17",
-                "reference": "3d7b900225882063cf179ce1d41bb8b1450a5a17",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/bc5e96bb4faf6bee7121085951d11b89488952f5",
+                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5",
                 "shasum": ""
             },
             "require": {
@@ -2292,7 +2292,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-10-01 06:52:36"
+            "time": "2014-11-03 21:16:34"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2802,25 +2802,31 @@
         },
         {
             "name": "twig/extensions",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "c0ab818595338dd5569369bfce2552d02cec5d50"
+                "url": "https://github.com/twigphp/Twig-extensions.git",
+                "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/c0ab818595338dd5569369bfce2552d02cec5d50",
-                "reference": "c0ab818595338dd5569369bfce2552d02cec5d50",
+                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
+                "reference": "8cf4b9fe04077bd54fc73f4fde83347040c3b8cd",
                 "shasum": ""
             },
             "require": {
                 "twig/twig": "~1.12"
             },
+            "require-dev": {
+                "symfony/translation": "~2.3"
+            },
+            "suggest": {
+                "symfony/translation": "Allow the time_diff output to be translated"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "1.2.x-dev"
                 }
             },
             "autoload": {
@@ -2835,18 +2841,16 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Common additional features for Twig that do not directly belong in core",
-            "homepage": "https://github.com/fabpot/Twig-extensions",
+            "homepage": "http://twig.sensiolabs.org/doc/extensions/index.html",
             "keywords": [
                 "i18n",
                 "text"
             ],
-            "time": "2014-07-05 10:01:35"
+            "time": "2014-10-30 14:30:03"
         },
         {
             "name": "twig/twig",

@@ -3,7 +3,6 @@
 namespace ZIMZIM\Bundles\CategoryProductBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use ZIMZIM\Controller\ZimzimController;
 
 use ZIMZIM\Bundles\CategoryProductBundle\Entity\Product;
 use ZIMZIM\Bundles\CategoryProductBundle\Form\ProductType;
@@ -12,7 +11,7 @@ use ZIMZIM\Bundles\CategoryProductBundle\Form\ProductType;
  * Product controller.
  *
  */
-class ProductController extends ZimzimController
+class ProductController extends MainController
 {
 
     /**
@@ -21,17 +20,15 @@ class ProductController extends ZimzimController
      */
     public function indexAction()
     {
-    $data = array(
-        'entity'     => 'ZIMZIMBundlesCategoryProductBundle:Product',
-        'show'       => 'zimzim_categoryproduct_product_show',
-        'edit'       => 'zimzim_categoryproduct_product_edit'
-    );
+        $data = array(
+            'entity' => 'ZIMZIMBundlesCategoryProductBundle:Product',
+            'show' => 'zimzim_categoryproduct_product_show',
+            'edit' => 'zimzim_categoryproduct_product_edit'
+        );
 
-    $this->gridList($data);
-
-
-   return $this->grid->getGridResponse('ZIMZIMBundlesCategoryProductBundle:Product:index.html.twig');
+        return $this->gridList($data);
     }
+
     /**
      * Creates a new Product entity.
      *
@@ -49,28 +46,37 @@ class ProductController extends ZimzimController
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('zimzim_categoryproduct_product_show', array('id' => $entity->getId())));
+            return $this->redirect(
+                $this->generateUrl('zimzim_categoryproduct_product_show', array('id' => $entity->getId()))
+            );
         }
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Product:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Product:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to create a Product entity.
-    *
-    * @param Product $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a Product entity.
+     *
+     * @param Product $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('zimzim_categoryproduct_product_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new ProductType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('zimzim_categoryproduct_product_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'button.create'));
 
@@ -84,12 +90,15 @@ class ProductController extends ZimzimController
     public function newAction()
     {
         $entity = new Product();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Product:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Product:new.html.twig',
+            array(
+                'entity' => $entity,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -108,10 +117,13 @@ class ProductController extends ZimzimController
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Product:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Product:show.html.twig',
+            array(
+                'entity' => $entity,
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -131,31 +143,42 @@ class ProductController extends ZimzimController
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Product:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Product:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
-    * Creates a form to edit a Product entity.
-    *
-    * @param Product $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Product entity.
+     *
+     * @param Product $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('zimzim_categoryproduct_product_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new ProductType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl(
+                        'zimzim_categoryproduct_product_update',
+                        array('id' => $entity->getId())
+                    ),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'button.update'));
 
         return $form;
     }
+
     /**
      * Edits an existing Product entity.
      *
@@ -175,18 +198,22 @@ class ProductController extends ZimzimController
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-			$this->updateSuccess();
+            $this->updateSuccess();
             $em->flush();
 
             return $this->redirect($this->generateUrl('zimzim_categoryproduct_product_edit', array('id' => $id)));
         }
 
-        return $this->render('ZIMZIMBundlesCategoryProductBundle:Product:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'ZIMZIMBundlesCategoryProductBundle:Product:edit.html.twig',
+            array(
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
+
     /**
      * Deletes a Product entity.
      *
@@ -225,7 +252,6 @@ class ProductController extends ZimzimController
             ->setAction($this->generateUrl('zimzim_categoryproduct_product_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'button.delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

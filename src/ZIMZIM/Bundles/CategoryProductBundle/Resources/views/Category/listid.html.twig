@@ -26,7 +26,12 @@
         <nav class="breadcrumbs">
             {% for parent in entity.Parents if parent != null %}
                 <a {% if parent.id == entity.id %} class="current"{% endif %}
-                        href="{{ path('zimzim_categoryproduct_category_listid', {'id':parent.id}) }}">
+                        {% if parent.slug == "" %}
+                            href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                        {% else %}
+                            href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':parent.slug}) }}"
+                        {% endif %}
+                        >
                     {{ parent.name }}
                 </a>
             {% endfor %}
@@ -69,12 +74,18 @@
                                 <div class="row case-category">
                                     <div class="small-6 small-centered columns text-center">
                                         {% if child.webpath != null %}
-                                            <img class="img-medium" src="/{{ child.webpath }}" alt="{{ child.description }}"/>
+                                            <img class="img-medium" src="/{{ child.webpath }}"
+                                                 alt="{{ child.description }}"/>
                                         {% endif %}
                                     </div>
                                     <div class="small-12 columns">
                                         <h3 class="text-center">
-                                            <a href="{{ path('zimzim_categoryproduct_category_listid', {'id':child.id}) }}">
+                                            <a {% if child.slug == "" %}
+                                                href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                                            {% else %}
+                                                href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':child.slug}) }}"
+                                            {% endif %}
+                                                    >
                                                 {{ child.name }}
                                             </a>
                                         </h3>
@@ -95,14 +106,20 @@
         </div>
     </div>
 
-    {% if entity.children|length == 0 %}
-
+    {% if entity.products|length != 0 %}
         <div class="row">
             <div class="small-10 small-centered columns panel">
-                &nbsp;
+                {% for product in entity.products %}
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <h2 class="title-product">
+                                {{ product.name }}
+                            </h2>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
     {% endif %}
 
 {% endblock page %}

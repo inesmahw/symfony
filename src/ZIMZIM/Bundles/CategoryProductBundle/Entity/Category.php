@@ -17,7 +17,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
  * @ORM\Entity(repositoryClass="ZIMZIM\Bundles\CategoryProductBundle\Entity\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Category implements Translatable
+class Category implements Translatable, iApyDataGridFilePath
 {
     /**
      * @var integer
@@ -39,6 +39,13 @@ class Category implements Translatable
      * @GRID\Column(operatorsVisible=false)
      */
     private $name;
+
+    /**
+     * @Gedmo\Translatable
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true, name="slug")
+     */
+    private $slug;
 
 
     /**
@@ -219,6 +226,7 @@ class Category implements Translatable
 
     /**
      * @Gedmo\TreeParent
+     * @Assert\NotBlank
      *
      * @GRID\Column(operatorsVisible=false, field="parent.name", title="parent")
      *
@@ -622,4 +630,27 @@ class Category implements Translatable
     {
         return $this->products;
     }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+
+
+    public function getListAttrImg(){
+        return array('path');
+    }
+
 }

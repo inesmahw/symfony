@@ -36,13 +36,16 @@ class Category implements Translatable, iApyDataGridFilePath
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="name", type="string", length=255)
-     * @GRID\Column(operatorsVisible=false)
+     * @GRID\Column(operatorsVisible=false, title="ZIMZIMCategoryProduct.name")
      */
     private $name;
 
     /**
      * @Gedmo\Translatable
      * @Gedmo\Slug(fields={"name"})
+     *
+     * @GRID\Column(operatorsVisible=false, title="ZIMZIMCategoryProduct.slug")
+     *
      * @ORM\Column(length=128, unique=true, name="slug")
      */
     private $slug;
@@ -53,7 +56,7 @@ class Category implements Translatable, iApyDataGridFilePath
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     * @GRID\Column(operatorsVisible=false, visible=false, sortable=false)
      */
     private $title;
 
@@ -62,7 +65,7 @@ class Category implements Translatable, iApyDataGridFilePath
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="description", type="text", nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     * @GRID\Column(operatorsVisible=false, visible=false, sortable=false)
      */
     private $description;
 
@@ -72,7 +75,7 @@ class Category implements Translatable, iApyDataGridFilePath
      *
      * @Gedmo\Translatable
      * @ORM\Column(name="content", type="text", nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     * @GRID\Column(operatorsVisible=false, visible=false, sortable=false)
      */
     private $content;
 
@@ -117,7 +120,7 @@ class Category implements Translatable, iApyDataGridFilePath
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @GRID\Column(operatorsVisible=false, safe=false)
+     * @GRID\Column(operatorsVisible=false, safe=false, title="ZIMZIMCategoryProduct.image")
      */
     public $path;
 
@@ -226,9 +229,8 @@ class Category implements Translatable, iApyDataGridFilePath
 
     /**
      * @Gedmo\TreeParent
-     * @Assert\NotBlank
      *
-     * @GRID\Column(operatorsVisible=false, field="parent.name", title="parent")
+     * @GRID\Column(operatorsVisible=false, field="parent.name", title="ZIMZIMCategoryProduct.parent")
      *
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumn(name="id_parent", referencedColumnName="id", onDelete="CASCADE")

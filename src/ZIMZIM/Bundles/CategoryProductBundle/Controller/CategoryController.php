@@ -79,7 +79,7 @@ class CategoryController extends MainController
             )
         );
 
-        $form->add('submit', 'submit', array('label' => 'button.create'));
+        $form->add('submit', 'submit', array('label' => 'button.create', 'translation_domain' => 'ZIMZIMCategoryProduct'));
 
         return $form;
     }
@@ -175,7 +175,7 @@ class CategoryController extends MainController
             )
         );
 
-        $form->add('submit', 'submit', array('label' => 'button.update'));
+        $form->add('submit', 'submit', array('label' => 'button.update', 'translation_domain' => 'ZIMZIMCategoryProduct'));
 
         return $form;
     }
@@ -253,7 +253,7 @@ class CategoryController extends MainController
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('zimzim_categoryproduct_category_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'button.delete'))
+            ->add('submit', 'submit', array('label' => 'button.delete', 'translation_domain' => 'ZIMZIMCategoryProduct'))
             ->getForm();
     }
 

@@ -1,15 +1,17 @@
-{% extends '::base.html.twig' %}
+{#% extends '::base.html.twig' %#}
+{% extends 'ZIMZIMBundlesCategoryProductBundle::layout.html.twig' %}
+
+{% trans_default_domain 'ZIMZIMCategoryProduct' %}
 
 {% block title %}
-    {{ 'zimzim_categoryproduct_category.index.title'|trans }}
+    {{ 'admincategory.index.title'|trans }}
 {% endblock title %}
-
 
 {% block page %}
     <div class="row">
         <div class="small-12 columns">
             <h1 class="text-center headerpagehome">
-                Category list
+                {{ 'admincategory.index.title'|trans }}
             </h1>
         </div>
     </div>

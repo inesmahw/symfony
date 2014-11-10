@@ -9,8 +9,7 @@
     <META NAME="keywords" CONTENT="default">
     <META NAME="viewport"
           content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    {% block headshare %}
-    {% endblock %}
+    {% block headshare %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
     <META NAME="description" CONTENT="{% block metadescription %}{% endblock metadescription %}">
     {% block stylesheets %}
@@ -69,7 +68,7 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {% else %}
-    {% javascripts 'app/js/jquery.min.js' 'app/js/hammer.jquery.js'  'app/js/modernizr.js' 'app/js/app.js' 'app/js/foundation.min.js' 'app/js/foundation.topbar.js' 'app/js/foundation.offcanvas.js' %}
+    {% javascripts 'app/js/jquery.min.js' 'app/js/hammer.jquery.js'  'app/js/modernizr.js' 'app/js/app.js' 'app/js/foundation.min.js' 'app/js/foundation.topbar.js' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     {% endif %}

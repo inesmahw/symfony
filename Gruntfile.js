@@ -20,7 +20,6 @@ module.exports = function(grunt){
                         'web/app/js/app.js',
                         'web/app/js/foundation.min.js',
                         'web/app/js/foundation.topbar.js',
-                        'web/app/js/foundation.offcanvas.js',
                         'web/app/js/ga.js'
                     ]
                 }
@@ -55,14 +54,13 @@ module.exports = function(grunt){
                     {src: 'bower_components/hammerjs/hammer.js', dest: 'web/app/js/hammer.jquery.js'},
                     {src: 'bower_components/modernizr/modernizr.js', dest: 'web/app/js/modernizr.js'},
                     {src: 'bower_components/foundation/js/foundation.min.js', dest: 'web/app/js/foundation.min.js'},
-                    {src: 'bower_components/foundation/js/foundation/foundation.topbar.js', dest: 'web/app/js/foundation.topbar.js'},
-                    {src: 'bower_components/foundation/js/foundation/foundation.offcanvas.js', dest: 'web/app/js/foundation.offcanvas.js'},
+                    {src: 'bower_components/foundation/js/foundation/foundation.topbar.js', dest: 'web/app/js/foundation.topbar.js'}
                 ]
             },
 
             css: {
                 files: [
-                    {expand: true, cwd: 'app/Resources/public/', src: ['css/**'], dest: 'web/app/', filter: 'isFile'},
+                    {expand: true, cwd: 'app/Resources/public/', src: ['css/**'], dest: 'web/app/', filter: 'isFile'}
                 ]
             },
 
@@ -71,7 +69,7 @@ module.exports = function(grunt){
                     {src: 'bower_components/foundation/scss/foudation/_settings.scss', dest: 'app/Resources/public/scss/_settings.scss'},
                     {src: 'bower_components/foundation/scss/foundation.scss', dest: 'app/Resources/public/scss/_foundation_mod.scss'},
                     {src: 'zz.save', dest: 'zz'},
-                    {src: 'var/bootstrap.test.php.save', dest: 'var/bootstrap.test.php'},
+                    {src: 'var/bootstrap.test.php.save', dest: 'var/bootstrap.test.php'}
                 ]
             }
 
@@ -107,6 +105,7 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('default', ['compass', 'autoprefixer', 'copy', 'jshint', 'uglify', 'cssmin']);
+    grunt.registerTask('jsdev', ['copy:js', 'jshint']);
     grunt.registerTask('js', ['copy:js', 'jshint', 'uglify']);
     grunt.registerTask('css', ['compass', 'autoprefixer', 'copy:css', 'cssmin']);
     grunt.registerTask('init', ['copy:init', 'default']);

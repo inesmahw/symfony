@@ -1,10 +1,12 @@
-{% extends '::base.html.twig' %}
+{% extends 'ZIMZIMBundlesCategoryProductBundle::layout.html.twig' %}
+
+{% trans_default_domain 'ZIMZIMCategoryProduct' %}
 
 {% block title %}
     {% if entity.title != null %}
         {{ entity.title }}
     {% else %}
-        {{ 'views.categoryproduct.category.listid.title'|trans }}
+        {{ parent() }}
     {% endif %}
 {% endblock title %}
 
@@ -12,55 +14,60 @@
     {% if entity.title != null %}
         {{ entity.title }}
     {% else %}
-        {{ 'views.categoryproduct.category.listid.desc'|trans }}
+        {{ parent() }}
     {% endif %}
 {% endblock metadescription %}
 
 
-{% block stylecontainer %}
-{% endblock stylecontainer %}
-
 {% block page %}
 
-    {% if entity.Parents|length != 0 %}
-        <nav class="breadcrumbs">
-            {% for parent in entity.Parents if parent != null %}
-                <a {% if parent.id == entity.id %} class="current"{% endif %}
-                        {% if parent.slug == "" %}
-                            href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
-                        {% else %}
-                            href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':parent.slug}) }}"
-                        {% endif %}
-                        >
-                    {{ parent.name }}
-                </a>
-            {% endfor %}
-        </nav>
-    {% endif %}
+    {% block breadcrumbs %}
+        {% if entity.Parents|length != 0 %}
+            <nav class="breadcrumbs">
+                {% for key, parent in entity.Parents if parent != null %}
+                    <a {% if parent.id == entity.id %} class="current"{% endif %}
+                            {% if parent.slug == "" %}
+                                href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                            {% else %}
+                                href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':parent.slug}) }}"
+                            {% endif %}
+                            >
+                        {{ parent.name }}
+                    </a>
+                {% endfor %}
+            </nav>
+        {% endif %}
+    {% endblock breadcrumbs %}
 
     <div class="row">
         <div class="small-10 small-centered columns">
             <div class="row">
-                {% if entity.path != null %}
+                {% if entity.path == null %}
                     <div class="medium-12 columns">
                         <h1 class="text-center title-category">
                             {{ entity.name }}
                         </h1>
                     </div>
                 {% else %}
-                    <div class="medium-12 columns">
+                    <div class="medium-2 columns">
+                        <img src="/{{ entity.webpath }}" class="full-width"/>
+                    </div>
+                    <div class="medium-10 columns">
                         <h1 class="text-center title-category">
                             {{ entity.name }}
                         </h1>
                     </div>
                 {% endif %}
+                {% if entity.content != null %}
+                    <div class="medium-12 columns">
+                        <p>
+                            {{ entity.content|raw }}
+                        </p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-
-    {% if entity.content != null %}
-        {{ entity.content|raw }}
-    {% endif %}
 
     <hr>
 

@@ -26,18 +26,18 @@ class MainController extends Controller
         $source = new Entity($data['entity'], $type);
 
         if (isset($data['show'])) {
-            $rowAction = new RowAction("button.show", $data['show']);
+            $rowAction = new RowAction("ZIMZIMCategoryProduct.button.show", $data['show']);
             $grid->addRowAction($rowAction);
         }
 
         if (isset($data['edit'])) {
-            $rowAction = new RowAction("button.update", $data['edit']);
+            $rowAction = new RowAction("ZIMZIMCategoryProduct.button.update", $data['edit']);
             $grid->addRowAction($rowAction);
         }
 
 
         if (isset($data['deletemass'])) {
-            $massAction = new MassAction('button.delete', $data['deletemass']);
+            $massAction = new MassAction('ZIMZIMCategoryProduct.button.delete', $data['deletemass']);
             $grid->addMassAction($massAction);
         }
 
@@ -50,21 +50,27 @@ class MainController extends Controller
         $em->getRepository($data['entity'])->getList($source);
 
         $source->manipulateRow(
-            function ($row) use($em){
-                foreach($row->getEntity()->getListAttrImg() as $attr){
-                    $method = 'get'.ucfirst($attr);
-                    $methodWeb = 'getWeb'.ucfirst($attr);
-                    if($row->getEntity()->{$method}() !== null){
-                        $row->setField($attr, '<img style="max-height:50px;"  src="/' . $row->getEntity()->{$methodWeb}() . '"/>');
+            function ($row) use ($em) {
+                if (method_exists($row->getEntity(), 'getListAttrImg')) {
+                    foreach ($row->getEntity()->getListAttrImg() as $attr) {
+                        $method = 'get' . ucfirst($attr);
+                        $methodWeb = 'getWeb' . ucfirst($attr);
+                        if ($row->getEntity()->{$method}() !== null) {
+                            $row->setField(
+                                $attr,
+                                '<img style="max-height:50px;"  src="/' . $row->getEntity()->{$methodWeb}() . '"/>'
+                            );
+                        }
                     }
                 }
+
                 return $row;
             }
         );
 
         $this->grid = $grid;
 
-        return $this->grid->getGridResponse($data['entity'].':index.html.twig');
+        return $this->grid->getGridResponse($data['entity'] . ':index.html.twig');
     }
 
     protected function createSuccess()

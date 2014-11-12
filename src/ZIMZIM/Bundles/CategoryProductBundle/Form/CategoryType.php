@@ -18,12 +18,12 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('title')
-            ->add('description')
-            ->add('content', null, array('attr' => array('contenteditable' => true)))
-            ->add('file')
-            ->add('products', null, array('attr' => array('class' => 'select-multiple')));
+            ->add('name', null, array('label' => 'admincategory.entity.name', 'translation_domain' => 'ZIMZIMCategoryProduct'))
+            ->add('title', null, array('label' => 'admincategory.entity.title', 'translation_domain' => 'ZIMZIMCategoryProduct'))
+            ->add('description', null, array('label' => 'admincategory.entity.desc', 'translation_domain' => 'ZIMZIMCategoryProduct'))
+            ->add('content', null, array('attr' => array('contenteditable' => true), 'label' => 'admincategory.entity.content', 'translation_domain' => 'ZIMZIMCategoryProduct'))
+            ->add('file', null, array('label' => 'admincategory.entity.image', 'translation_domain' => 'ZIMZIMCategoryProduct'))
+            ->add('products', null, array('attr' => array('class' => 'select-multiple'), 'label' => 'admincategory.entity.products', 'translation_domain' => 'ZIMZIMCategoryProduct'));
 
 
         $builder->addEventListener(
@@ -34,22 +34,30 @@ class CategoryType extends AbstractType
                 $id_category = null;
                 if ($category && $category->getId() !== null) {
                     $id_category = $category->getId();
-                    if($id_category === 1)return;
+                    if ($id_category === 1) {
+                        return;
+                    }
                 }
                 $form->
-                    add(
-                        'parent',
-                        'entity',
-                        array(
-                            'class' => 'ZIMZIMBundlesCategoryProductBundle:Category',
-                            'property' => 'name',
-                            'query_builder' => function (CategoryRepository $er) use ($id_category){
-                                    return $er->createQueryBuilder('c')
-                                        ->where('c.id <> :category')
-                                        ->setParameter('category', $id_category);
-                                }
-                        )
-                    );
+                add(
+                    'parent',
+                    'entity',
+                    array(
+                        'class' => 'ZIMZIMBundlesCategoryProductBundle:Category',
+                        'property' => 'name',
+                        'query_builder' => function (CategoryRepository $er) use ($id_category) {
+                            $query = $er->createQueryBuilder('c');
+                            if (isset($id_category)) {
+                                $query->where('c.id <> :category')
+                                    ->setParameter('category', $id_category);
+                            }
+
+                            return $query;
+                        },
+                        'label' => 'admincategory.entity.parent',
+                        'translation_domain' => 'ZIMZIMCategoryProduct'
+                    )
+                );
             }
         );
     }

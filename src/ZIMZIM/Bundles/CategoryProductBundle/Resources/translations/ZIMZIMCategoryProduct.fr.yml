@@ -21,6 +21,9 @@ admincategory:
         image: "Image"
         updatedat: "Modifier le"
         products: "Produits"
+home:
+    index:
+        title: "Page de presentation des categories et produits mis en valeur"
 button:
     create: "Créer"
     return: "Retour"

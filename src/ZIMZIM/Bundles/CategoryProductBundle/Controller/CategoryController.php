@@ -19,7 +19,7 @@ class CategoryController extends MainController
      * Lists all Category entities.
      *
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $data = array(
             'entity' => 'ZIMZIMBundlesCategoryProductBundle:Category',

@@ -23,9 +23,13 @@ class ProductType extends AbstractType
             ->add('specification')
             ->add('homepage', null, array('required' => false))
             ->add('file1')
+            ->add('altPath1')
             ->add('file2')
+            ->add('altPath2')
             ->add('file3')
+            ->add('altPath3')
             ->add('file4')
+            ->add('altPath4')
             ->add('categories', null, array('attr'=> array('class' => 'select-multiple')))
         ;
     }

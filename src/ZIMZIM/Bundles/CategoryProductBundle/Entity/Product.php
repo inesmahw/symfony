@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
 use APY\DataGridBundle\Grid\Mapping as GRID;
+use ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints as AssertZim;
+
 
 /**
  * Product
@@ -23,6 +25,7 @@ class Product implements Translatable, iApyDataGridFilePath
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $id;
 
@@ -30,14 +33,30 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var string
      *
      * @Gedmo\Translatable
+     *
+     * @GRID\Column(operatorsVisible=false)
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
+     * @Gedmo\Translatable
+     * @Gedmo\Slug(fields={"name"})
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     *
+     * @ORM\Column(length=128, unique=true, name="slug")
+     */
+    private $slug;
+
+    /**
      * @var string
      *
      * @Gedmo\Translatable
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -46,6 +65,9 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var string
      *
      * @Gedmo\Translatable
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -54,8 +76,10 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var string
      *
      * @Gedmo\Translatable
+     *
      * @ORM\Column(name="feature", type="text", nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $feature;
 
@@ -63,8 +87,10 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var string
      *
      * @Gedmo\Translatable
+     *
      * @ORM\Column(name="listing", type="text", nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $listing;
 
@@ -72,23 +98,29 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var string
      *
      * @Gedmo\Translatable
+     *
      * @ORM\Column(name="specification", type="text", nullable=true)
-     * @GRID\Column(operatorsVisible=false)
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $specification;
 
     /**
      * @var boolean
      *
+     * @AssertZim\ConstraintMaxEntityHomePage
+     *
      * @ORM\Column(name="homepage", type="boolean")
      */
-    private $homepage;
+    private $homepage = false;
 
     /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(name="created_at", type="datetime")
+     *
      * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $createdAt;
@@ -97,7 +129,9 @@ class Product implements Translatable, iApyDataGridFilePath
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(name="updated_at", type="datetime")
+     *
      * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
      */
     private $updatedAt;
@@ -126,15 +160,24 @@ class Product implements Translatable, iApyDataGridFilePath
     /****************************************** image / file ************************************************/
 
     /**
-     * @Assert\File(maxSize="200000")
+     * @Assert\File(maxSize="200000", mimeTypes={"image/jpeg", "image/png", "image/gif"})
      */
     public $file1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true, name="file1")
+     *
      * @GRID\Column(operatorsVisible=false, safe=false)
      */
     public $path1;
+
+    /**
+     *
+     * @ORM\Column(name="altPath1", type="string", length=255, nullable=true )
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     */
+    public $altPath1;
 
     public function getAbsolutePath1()
     {
@@ -147,15 +190,24 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @Assert\File(maxSize="200000")
+     * @Assert\File(maxSize="200000", mimeTypes={"image/jpeg", "image/png", "image/gif"})
      */
     public $file2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true, name="file2")
+     *
      * @GRID\Column(operatorsVisible=false, safe=false)
      */
     public $path2;
+
+    /**
+     *
+     * @ORM\Column(name="altPath2", type="string", length=255, nullable=true )
+     *
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     */
+    public $altPath2;
 
     public function getAbsolutePath2()
     {
@@ -168,7 +220,7 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @Assert\File(maxSize="200000")
+     * @Assert\File(maxSize="200000", mimeTypes={"image/jpeg", "image/png", "image/gif"})
      */
     public $file3;
 
@@ -177,6 +229,14 @@ class Product implements Translatable, iApyDataGridFilePath
      * @GRID\Column(operatorsVisible=false, safe=false)
      */
     public $path3;
+
+    /**
+     *
+     * @ORM\Column(name="altPath3", type="string", length=255, nullable=true )
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     */
+    public $altPath3;
+
 
     public function getAbsolutePath3()
     {
@@ -189,7 +249,7 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @Assert\File(maxSize="200000")
+     * @Assert\File(maxSize="200000", mimeTypes={"image/jpeg", "image/png", "image/gif"})
      */
     public $file4;
 
@@ -198,6 +258,14 @@ class Product implements Translatable, iApyDataGridFilePath
      * @GRID\Column(operatorsVisible=false, safe=false)
      */
     public $path4;
+
+    /**
+     *
+     * @ORM\Column(name="altPath4", type="string", length=255, nullable=true )
+     * @GRID\Column(operatorsVisible=false, visible=false, filterable=false)
+     */
+    public $altPath4;
+
 
     public function getAbsolutePath4()
     {
@@ -525,17 +593,6 @@ class Product implements Translatable, iApyDataGridFilePath
         return $this->categories;
     }
 
-
-    public function testUpload()
-    {
-        if (isset($this->file)) {
-            if ($this->file !== null) {
-                $this->preUpload();
-                $this->upload();
-            }
-        }
-    }
-
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -544,22 +601,22 @@ class Product implements Translatable, iApyDataGridFilePath
     {
         if (isset($this->file1)) {
             if (null !== $this->file1) {
-                $this->path1 = sha1(uniqid(mt_rand(), true)) . '.' . $this->file1->guessExtension();
+                $this->path1 = urlencode(str_replace('.'.$this->file1->guessExtension(), '', $this->file1->getClientOriginalName())) . '.' . $this->file1->guessExtension();
             }
         }
         if (isset($this->file2)) {
             if (null !== $this->file2) {
-                $this->path2 = sha1(uniqid(mt_rand(), true)) . '.' . $this->file2->guessExtension();
+                $this->path2 = urlencode(str_replace('.'.$this->file2->guessExtension(), '', $this->file2->getClientOriginalName())) . '.' . $this->file2->guessExtension();
             }
         }
         if (isset($this->file3)) {
             if (null !== $this->file3) {
-                $this->path3 = sha1(uniqid(mt_rand(), true)) . '.' . $this->file3->guessExtension();
+                $this->path3 = urlencode(str_replace('.'.$this->file3->guessExtension(), '', $this->file3->getClientOriginalName())) . '.' . $this->file3->guessExtension();
             }
         }
         if (isset($this->file4)) {
             if (null !== $this->file4) {
-                $this->path4 = sha1(uniqid(mt_rand(), true)) . '.' . $this->file4->guessExtension();
+                $this->path4 = urlencode(str_replace('.'.$this->file4->guessExtension(), '', $this->file4->getClientOriginalName())) . '.' . $this->file4->guessExtension();
             }
         }
     }
@@ -622,5 +679,88 @@ class Product implements Translatable, iApyDataGridFilePath
     public function getListAttrImg(){
         return array('path1', 'path2', 'path3', 'path4');
     }
+
+    /**
+     * @param mixed $altPath1
+     */
+    public function setAltPath1($altPath1)
+    {
+        $this->altPath1 = $altPath1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAltPath1()
+    {
+        return $this->altPath1;
+    }
+
+    /**
+     * @param mixed $altPath2
+     */
+    public function setAltPath2($altPath2)
+    {
+        $this->altPath2 = $altPath2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAltPath2()
+    {
+        return $this->altPath2;
+    }
+
+    /**
+     * @param mixed $altPath3
+     */
+    public function setAltPath3($altPath3)
+    {
+        $this->altPath3 = $altPath3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAltPath3()
+    {
+        return $this->altPath3;
+    }
+
+    /**
+     * @param mixed $altPath4
+     */
+    public function setAltPath4($altPath4)
+    {
+        $this->altPath4 = $altPath4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAltPath4()
+    {
+        return $this->altPath4;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
 }
 

@@ -1,6 +1,2 @@
-services:
-    #zimzim.twig.extension.categoryproduct_extension:
-    #    class: ZIMZIM\Bundles\CategoryProductBundle\TwigExtension\CategoryProductExtension
-    #    arguments: [@doctrine.orm.entity_manager ]
-    #    tags:
-    #        - { name: twig.extension }
+imports:
+    - { resource: service/validator.yml }

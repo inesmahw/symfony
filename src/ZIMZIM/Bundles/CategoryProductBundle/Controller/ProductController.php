@@ -198,6 +198,7 @@ class ProductController extends MainController
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->preUpload();
             $this->updateSuccess();
             $em->flush();
 

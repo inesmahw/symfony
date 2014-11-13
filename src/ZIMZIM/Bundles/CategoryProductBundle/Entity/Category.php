@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
 use APY\DataGridBundle\Grid\Mapping as GRID;
-
+use ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints as AssertZim;
 
 /**
  * Category
@@ -98,6 +98,15 @@ class Category implements Translatable, iApyDataGridFilePath
     private $updatedAt;
 
     /**
+     * @var boolean
+     *
+     * @AssertZim\ConstraintMaxEntityHomePage
+     *
+     * @ORM\Column(name="homepage", type="boolean")
+     */
+    private $homepage = false;
+
+    /**
      * @Gedmo\Locale
      */
     private $locale;
@@ -144,18 +153,6 @@ class Category implements Translatable, iApyDataGridFilePath
         return 'resources/category';
     }
 
-
-    public function testUpload()
-    {
-        if (isset($this->file)) {
-            if ($this->file !== null) {
-                $this->preUpload();
-
-                $this->upload();
-            }
-        }
-    }
-
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -164,7 +161,7 @@ class Category implements Translatable, iApyDataGridFilePath
     {
         if (isset($this->file)) {
             if (null !== $this->file) {
-                $this->path = sha1(uniqid(mt_rand(), true)) . '.' . $this->file->guessExtension();
+                $this->path = urlencode($this->file->getClientOriginalName()) . '.' . $this->file->guessExtension();
             }
         }
     }
@@ -650,9 +647,27 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
 
-
     public function getListAttrImg(){
         return array('path');
     }
+
+    /**
+     * @param boolean $homepage
+     */
+    public function setHomepage($homepage)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
+
 
 }

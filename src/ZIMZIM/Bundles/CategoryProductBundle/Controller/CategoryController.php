@@ -199,7 +199,7 @@ class CategoryController extends MainController
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $entity->testUpload();
+            $entity->preUpload();
             $this->updateSuccess();
             $em->flush();
 

@@ -16,7 +16,6 @@ use ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints as AssertZim;
  * @ORM\Table(name="default_category")
  * @ORM\Entity(repositoryClass="ZIMZIM\Bundles\CategoryProductBundle\Entity\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
- * @AssertZim\ConstraintMaxEntityHomePage
  */
 class Category implements Translatable, iApyDataGridFilePath
 {
@@ -98,12 +97,6 @@ class Category implements Translatable, iApyDataGridFilePath
      */
     private $updatedAt;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="homepage", type="boolean")
-     */
-    private $homepage = false;
 
     /**
      * @Gedmo\Locale
@@ -608,6 +601,7 @@ class Category implements Translatable, iApyDataGridFilePath
             array_unshift($parents, $object);
             $object = $object->getParent();
         }
+
         return $parents;
     }
 
@@ -646,27 +640,31 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
 
-    public function getListAttrImg(){
+    public function getListAttrImg()
+    {
         return array('path');
     }
 
-    /**
-     * @param boolean $homepage
-     */
-    public function setHomepage($homepage)
-    {
-        $this->homepage = $homepage;
 
-        return $this;
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**
-     * @return boolean
+     * @param mixed $file
      */
-    public function getHomepage()
+    public function setFile($file)
     {
-        return $this->homepage;
+        $this->file = $file;
     }
 
 
+    public function addProduct(Product $product)
+    {
+        $this->products[] = $product;
+    }
 }

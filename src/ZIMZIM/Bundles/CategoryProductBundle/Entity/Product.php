@@ -16,7 +16,6 @@ use ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints as AssertZim;
  * @ORM\Table(name="default_product")
  * @ORM\Entity(repositoryClass="ZIMZIM\Bundles\CategoryProductBundle\Entity\ProductRepository")
  * @ORM\HasLifecycleCallbacks
- * @AssertZim\ConstraintMaxEntityHomePage
  */
 class Product implements Translatable, iApyDataGridFilePath
 {
@@ -106,12 +105,6 @@ class Product implements Translatable, iApyDataGridFilePath
      */
     private $specification;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="homepage", type="boolean")
-     */
-    private $homepage = false;
 
     /**
      * @var \DateTime
@@ -146,7 +139,7 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="ZIMZIM\Bundles\CategoryProductBundle\Entity\Category", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="ZIMZIM\Bundles\CategoryProductBundle\Entity\Category", mappedBy="products", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="default_category_product")
      **/
     private $categories;
@@ -509,29 +502,6 @@ class Product implements Translatable, iApyDataGridFilePath
         return $this->specification;
     }
 
-    /**
-     * Set homepage
-     *
-     * @param boolean $homepage
-     *
-     * @return Product
-     */
-    public function setHomepage($homepage)
-    {
-        $this->homepage = $homepage;
-
-        return $this;
-    }
-
-    /**
-     * Get homepage
-     *
-     * @return boolean
-     */
-    public function getHomepage()
-    {
-        return $this->homepage;
-    }
 
     /**
      * @param \DateTime $createdAt
@@ -600,22 +570,30 @@ class Product implements Translatable, iApyDataGridFilePath
     {
         if (isset($this->file1)) {
             if (null !== $this->file1) {
-                $this->path1 = urlencode(str_replace('.'.$this->file1->guessExtension(), '', $this->file1->getClientOriginalName())) . '.' . $this->file1->guessExtension();
+                $this->path1 = urlencode(
+                        str_replace('.' . $this->file1->guessExtension(), '', $this->file1->getClientOriginalName())
+                    ) . '.' . $this->file1->guessExtension();
             }
         }
         if (isset($this->file2)) {
             if (null !== $this->file2) {
-                $this->path2 = urlencode(str_replace('.'.$this->file2->guessExtension(), '', $this->file2->getClientOriginalName())) . '.' . $this->file2->guessExtension();
+                $this->path2 = urlencode(
+                        str_replace('.' . $this->file2->guessExtension(), '', $this->file2->getClientOriginalName())
+                    ) . '.' . $this->file2->guessExtension();
             }
         }
         if (isset($this->file3)) {
             if (null !== $this->file3) {
-                $this->path3 = urlencode(str_replace('.'.$this->file3->guessExtension(), '', $this->file3->getClientOriginalName())) . '.' . $this->file3->guessExtension();
+                $this->path3 = urlencode(
+                        str_replace('.' . $this->file3->guessExtension(), '', $this->file3->getClientOriginalName())
+                    ) . '.' . $this->file3->guessExtension();
             }
         }
         if (isset($this->file4)) {
             if (null !== $this->file4) {
-                $this->path4 = urlencode(str_replace('.'.$this->file4->guessExtension(), '', $this->file4->getClientOriginalName())) . '.' . $this->file4->guessExtension();
+                $this->path4 = urlencode(
+                        str_replace('.' . $this->file4->guessExtension(), '', $this->file4->getClientOriginalName())
+                    ) . '.' . $this->file4->guessExtension();
             }
         }
     }
@@ -675,7 +653,8 @@ class Product implements Translatable, iApyDataGridFilePath
         }
     }
 
-    public function getListAttrImg(){
+    public function getListAttrImg()
+    {
         return array('path1', 'path2', 'path3', 'path4');
     }
 
@@ -761,5 +740,12 @@ class Product implements Translatable, iApyDataGridFilePath
         return $this->slug;
     }
 
+    public function addCategory(Category $category)
+    {
+        $this->categories[] = $category;
+        $category->addProduct($this);
+
+        return $this;
+    }
 }
 

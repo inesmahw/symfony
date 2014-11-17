@@ -2,6 +2,7 @@
 
 namespace ZIMZIM\Bundles\CategoryProductBundle\EventListener;
 
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use ZIMZIM\Bundles\CategoryProductBundle\ZIMZIMCategoryProductEvents;
 
@@ -20,6 +21,7 @@ class ElementHomePageListener implements EventSubscriberInterface
     }
 
     public function getElementHomePage(){
+
 
     }
 

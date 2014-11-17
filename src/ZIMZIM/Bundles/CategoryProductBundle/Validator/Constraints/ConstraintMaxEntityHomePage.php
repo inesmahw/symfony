@@ -11,8 +11,13 @@ class ConstraintMaxEntityHomePage extends Constraint
 {
     public $message = 'constaint.maxentityhomepage';
 
-    public function validatedBy()
+
+    public function getTargets()
     {
-        return 'maxentityhomepage';
+        return self::CLASS_CONSTRAINT;
+    }
+
+    public function validatedBy(){
+        return 'zimzim_categoryproductbundle_maxentityhomepage';
     }
 }

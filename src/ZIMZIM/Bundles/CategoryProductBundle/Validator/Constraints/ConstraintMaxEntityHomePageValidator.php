@@ -17,17 +17,19 @@ class ConstraintMaxEntityHomePageValidator extends ConstraintValidator
         $this->maxHomePage = $maxHomePage;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate($object, Constraint $constraint)
     {
-        if ($value === true) {
+        if ($object->getHomepage() === true) {
 
-            $countProduct = $this->entityManager->getRepository('ZIMZIMBundlesCategoryProductBundle:Product')->findBy(
-                array('homepage' => true)
-            );
+            $id = $object->getId();
 
-            $countCategory = $this->entityManager->getRepository('ZIMZIMBundlesCategoryProductBundle:Category')->findBy(
-                array('homepage' => true)
-            );
+            $countProduct = $this->entityManager->getRepository(
+                'ZIMZIMBundlesCategoryProductBundle:Product'
+            )->getCountProductHomepage($id);
+
+            $countCategory = $this->entityManager->getRepository(
+                'ZIMZIMBundlesCategoryProductBundle:Category'
+            )->getCountCategoryHomepage($id);
 
             $nbHomePage = intval($countCategory + $countProduct);
 

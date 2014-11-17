@@ -3,4 +3,4 @@ services:
         class: ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints\ConstraintMaxEntityHomePageValidator
         arguments: [ @doctrine.orm.entity_manager, %zimzim_bundles_category_product.max_element% ]
         tags:
-            - { name: validator.constraint_validator, alias: maxentityhomepage }
+            - { name: validator.constraint_validator, alias: zimzim_categoryproductbundle_maxentityhomepage }

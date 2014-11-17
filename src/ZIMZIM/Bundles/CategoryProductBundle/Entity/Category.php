@@ -16,6 +16,7 @@ use ZIMZIM\Bundles\CategoryProductBundle\Validator\Constraints as AssertZim;
  * @ORM\Table(name="default_category")
  * @ORM\Entity(repositoryClass="ZIMZIM\Bundles\CategoryProductBundle\Entity\CategoryRepository")
  * @ORM\HasLifecycleCallbacks
+ * @AssertZim\ConstraintMaxEntityHomePage
  */
 class Category implements Translatable, iApyDataGridFilePath
 {
@@ -99,8 +100,6 @@ class Category implements Translatable, iApyDataGridFilePath
 
     /**
      * @var boolean
-     *
-     * @AssertZim\ConstraintMaxEntityHomePage
      *
      * @ORM\Column(name="homepage", type="boolean")
      */

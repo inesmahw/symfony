@@ -18,17 +18,4 @@ class CategoryRepository extends NestedTreeRepository implements iApyDataGridRep
         $source->addHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
         return $source;
     }
-
-    public function getCountCategoryHomepage($id = null){
-        $query = $this->createQueryBuilder('c');
-        $query->where('c.homepage = :true')
-            ->setParameter('true', true);
-
-        if(isset($id)){
-            $query->andWhere('c.id <> :id')
-                ->setParameter('id', $id);
-        }
-
-        return $query->getQuery()->getResult();
-    }
 }

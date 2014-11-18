@@ -18,17 +18,4 @@ class ProductRepository extends EntityRepository
         $source->addHint(Query::HINT_CUSTOM_OUTPUT_WALKER, 'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker');
         return $source;
     }
-    public function getCountProductHomepage($id = null){
-        $query = $this->createQueryBuilder('p');
-        $query->where('p.homepage = :true')
-            ->setParameter('true', true);
-
-        if(isset($id)){
-            $query->andWhere('p.id <> :id')
-                ->setParameter('id', $id);
-        }
-
-        return $query->getQuery()->getResult();
-    }
-
 }

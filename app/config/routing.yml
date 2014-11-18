@@ -1,5 +1,5 @@
 zimzim_bundles_category_product:
-    resource: "@ZIMZIMBundlesCategoryProductBundle/Resources/config/routing.yml"
+    resource: "@ZIMZIMCategoryProductBundle/Resources/config/routing.yml"
     prefix:   /
 
 hwi_oauth_redirect:

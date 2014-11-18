@@ -30,7 +30,7 @@ class AppKernel extends Kernel
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
 
             new ZIMZIM\Bundles\UserBundle\ZIMZIMBundlesUserBundle(),
-            new ZIMZIM\Bundles\CategoryProductBundle\ZIMZIMBundlesCategoryProductBundle()
+            new ZIMZIM\CategoryProductBundle\ZIMZIMCategoryProductBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

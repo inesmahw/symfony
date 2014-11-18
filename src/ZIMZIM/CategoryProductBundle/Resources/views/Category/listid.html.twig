@@ -113,14 +113,14 @@
         </div>
     </div>
 
-    {% if entity.products|length != 0 %}
+    {% if entity.categoryproducts|length != 0 %}
         <div class="row">
             <div class="small-10 small-centered columns panel">
-                {% for product in entity.products %}
+                {% for categoryproduct in entity.categoryproducts %}
                     <div class="row">
                         <div class="small-12 columns">
                             <h2 class="title-product">
-                                {{ product.name }}
+                                {{ categoryproduct.product.name }}
                             </h2>
                         </div>
                     </div>

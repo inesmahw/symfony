@@ -29,6 +29,7 @@ class ProductType extends AbstractType
             ->add('altPath3')
             ->add('file4')
             ->add('altPath4')
+            /*
             ->add(
                 'categories',
                 null,
@@ -43,7 +44,7 @@ class ProductType extends AbstractType
                                 ->addOrderBy('c.lft', 'ASC');
                     }
                 )
-            );
+            )*/;
     }
 
     /**

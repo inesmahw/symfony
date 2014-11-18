@@ -3,12 +3,13 @@
 namespace ZIMZIM\CategoryProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * CategoryProduct
  *
- * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Table(name="default_categoryproduct")
+ * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
  */
 class CategoryProduct
 {
@@ -22,21 +23,27 @@ class CategoryProduct
     private $id;
 
     /**
-     * @var integer
+     * @var Category
      *
-     * @ORM\Column(name="category", type="integer")
-     */
+     * @Gedmo\SortableGroup
+     *
+     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Category", inversedBy="categoryproducts", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id", nullable=FALSE)
+     **/
     private $category;
 
     /**
-     * @var integer
+     * @var Product
      *
-     * @ORM\Column(name="product", type="integer")
-     */
+     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Product", inversedBy="categoryproducts", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="id_product", referencedColumnName="id", nullable=FALSE)
+     **/
     private $product;
 
     /**
      * @var integer
+     *
+     * @Gedmo\SortablePosition
      *
      * @ORM\Column(name="position", type="integer")
      */

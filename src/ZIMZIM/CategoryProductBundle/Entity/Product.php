@@ -138,14 +138,13 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Category", mappedBy="products", cascade={"persist", "remove"})
-     * @ORM\JoinTable(name="default_category_product")
+     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="categories")
      **/
-    private $categories;
+    private $categoryproducts;
 
     public function __construct()
     {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categoryproducts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /****************************************** image / file ************************************************/
@@ -544,24 +543,6 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @param mixed $categories
-     */
-    public function setCategories($categories)
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
@@ -739,12 +720,23 @@ class Product implements Translatable, iApyDataGridFilePath
         return $this->slug;
     }
 
-    public function addCategory(Category $category)
+    /**
+     * @return mixed
+     */
+    public function getCategoryproducts()
     {
-        $this->categories[] = $category;
-        $category->addProduct($this);
+        return $this->categoryproducts;
+    }
+
+    /**
+     * @param mixed $categoryproducts
+     */
+    public function setCategoryproducts($categoryproducts)
+    {
+        $this->categoryproducts = $categoryproducts;
 
         return $this;
     }
+
 }
 

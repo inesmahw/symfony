@@ -108,9 +108,11 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\ManyToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Product", inversedBy="categories")
+     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="category")
+     * @ORM\OrderBy({"position" = "ASC"})
      **/
-    private $products;
+    private $categoryproducts;
+
 
     /******************************** IMAGE **************************/
     /**
@@ -243,7 +245,7 @@ class Category implements Translatable, iApyDataGridFilePath
     public function __construct()
     {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categoryproducts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -607,24 +609,6 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @param mixed $products
-     */
-    public function setProducts($products)
-    {
-        $this->products = $products;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    /**
      * @param mixed $slug
      */
     public function setSlug($slug)
@@ -664,13 +648,27 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
 
-    public function addProduct(Product $product)
-    {
-        $this->products[] = $product;
-    }
-
     public function getIndentedTitle()
     {
-        return str_repeat("--", $this->lvl) . $this->name;
+        return str_repeat("--", $this->lvl) . ' ' . $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCategoryproducts()
+    {
+        return $this->categoryproducts;
+    }
+
+    /**
+     * @param mixed $categoryproducts
+     */
+    public function setCategoryproducts($categoryproducts)
+    {
+        $this->categoryproducts = $categoryproducts;
+
+        return $this;
+    }
+
 }

@@ -1,0 +1,6 @@
+services:
+    zimzim_categoryproduct.form.updatecontentform:
+        class: ZIMZIM\CategoryProductBundle\Form\Update\CategoryContentType
+        arguments: [ ]
+        tags:
+            - { name: form.type, alias: zimzim_categoryproductbundle_update_categorycontenttype }

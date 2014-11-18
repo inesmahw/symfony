@@ -38,10 +38,12 @@
                     <th>{{ 'admincategory.entity.content'|trans}}</th>
                     <td>{{ entity.content }}</td>
                 </tr>
+                {% if entity.parent != null %}
                 <tr>
                     <th>{{ 'admincategory.entity.parent'|trans}}</th>
                     <td>{{ entity.parent.name }}</td>
                 </tr>
+                {% endif %}
                 {% if entity.path != null %}
                     <tr>
                         <th>{{ 'admincategory.entity.image'|trans}}</th>

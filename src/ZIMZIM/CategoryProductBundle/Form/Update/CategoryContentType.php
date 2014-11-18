@@ -1,6 +1,6 @@
 <?php
 
-namespace ZIMZIM\CategoryProductBundle\Form;
+namespace ZIMZIM\CategoryProductBundle\Form\Update;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use ZIMZIM\CategoryProductBundle\Entity\CategoryRepository;
 
-class CategoryType extends AbstractType
+class CategoryContentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -48,7 +48,7 @@ class CategoryType extends AbstractType
                 array('label' => 'admincategory.entity.image', 'translation_domain' => 'ZIMZIMCategoryProduct')
             );
 
-
+        /*
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) {
@@ -58,9 +58,18 @@ class CategoryType extends AbstractType
                 if ($category && $category->getId() !== null) {
                     $id_category = $category->getId();
                     if ($id_category === 1) {
-                        return;
+                        return false;
                     }
                 }
+                $form->add(
+                    'products',
+                    null,
+                    array(
+                        'attr' => array('class' => 'select-multiple'),
+                        'label' => 'admincategory.entity.products',
+                        'translation_domain' => 'ZIMZIMCategoryProduct'
+                    )
+                );
                 $form->
                     add(
                         'parent',
@@ -83,8 +92,10 @@ class CategoryType extends AbstractType
                             'translation_domain' => 'ZIMZIMCategoryProduct'
                         )
                     );
+                return true;
             }
         );
+        */
     }
 
     /**
@@ -108,6 +119,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'zimzim_categoryproductbundle_categorytype';
+        return 'zimzim_categoryproductbundle_update_categorycontenttype';
     }
 }

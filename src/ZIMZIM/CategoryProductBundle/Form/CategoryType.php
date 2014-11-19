@@ -83,6 +83,13 @@ class CategoryType extends AbstractType
                             'translation_domain' => 'ZIMZIMCategoryProduct'
                         )
                     );
+                $form->add(
+                    'categoryproducts',
+                    'collection',
+                    array(
+                        'type' => 'zimzim_categoryproductbundle_categoryproducttype'
+                    )
+                );
             }
         );
     }

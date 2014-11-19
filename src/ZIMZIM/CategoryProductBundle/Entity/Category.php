@@ -666,8 +666,19 @@ class Category implements Translatable, iApyDataGridFilePath
      */
     public function setCategoryproducts($categoryproducts)
     {
+        foreach($categoryproducts as $categoryproduct){
+            $categoryproduct->setCategory($this);
+        }
         $this->categoryproducts = $categoryproducts;
 
+        return $this;
+    }
+
+    public function addCategoryproducts(CategoryProduct $categoryproduct){
+
+        if (!$this->categoryproducts->contains($categoryproduct)) {
+            $this->categoryproducts->add($categoryproduct);
+        }
         return $this;
     }
 

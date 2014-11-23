@@ -116,16 +116,30 @@
 
     {% if entity.categoryproducts|length != 0 %}
         <div class="row">
-            <div class="small-10 small-centered columns panel">
-                {% for categoryproduct in entity.categoryproducts %}
-                    <div class="row">
-                        <div class="small-12 columns">
-                            <h2 class="title-product">
-                                {{ categoryproduct.product.name }}
-                            </h2>
-                        </div>
-                    </div>
-                {% endfor %}
+            <div class="small-10 small-centered columns">
+                <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
+                    {% for categoryproduct in entity.categoryproducts %}
+                        <li class="category-box">
+                            <div class="fullfull">
+                                <a class="front" href="">
+                                    {% if categoryproduct.product.webpath1 != null %}
+                                        <img class="img-medium" src="/{{ categoryproduct.product.webpath1 }}"
+                                             alt="{{ categoryproduct.product.altpath1 }}"/>
+                                    {% endif %}
+                                </a>
+                                <a class="behind" >
+                                    <img class="img-medium fake-image" src="/{{ categoryproduct.product.webpath2 }}"
+                                         alt="{{ categoryproduct.product.altpath2 }}"/>
+                                </a>
+                                <h3 class="text-center h3category">
+                                    <a >
+                                        {{ categoryproduct.product.name }}
+                                    </a>
+                                </h3>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     {% endif %}

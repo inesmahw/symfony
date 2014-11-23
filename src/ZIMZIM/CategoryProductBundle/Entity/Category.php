@@ -13,7 +13,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
  *
  * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="default_category")
- * @ORM\Entity(repositoryClass="ZIMZIM\CategoryProductBundle\Entity\CategoryRepository")
+ * @ORM\Entity(repositoryClass="CategoryRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Category implements Translatable, iApyDataGridFilePath
@@ -108,7 +108,7 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="category",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="CategoryProduct", mappedBy="category",cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      **/
     private $categoryproducts;
@@ -537,10 +537,10 @@ class Category implements Translatable, iApyDataGridFilePath
     /**
      * Set parent
      *
-     * @param \ZIMZIM\CategoryProductBundle\Entity\Category $parent
+     * @param Category $parent
      * @return Category
      */
-    public function setParent(\ZIMZIM\CategoryProductBundle\Entity\Category $parent = null)
+    public function setParent(Category $parent = null)
     {
         $this->parent = $parent;
 
@@ -550,7 +550,7 @@ class Category implements Translatable, iApyDataGridFilePath
     /**
      * Get parent
      *
-     * @return \ZIMZIM\CategoryProductBundle\Entity\Category
+     * @return Category
      */
     public function getParent()
     {
@@ -560,10 +560,10 @@ class Category implements Translatable, iApyDataGridFilePath
     /**
      * Add children
      *
-     * @param \ZIMZIM\CategoryProductBundle\Entity\Category $children
+     * @param Category $children
      * @return Category
      */
-    public function addChild(\ZIMZIM\CategoryProductBundle\Entity\Category $children)
+    public function addChild(Category $children)
     {
         $this->children[] = $children;
 
@@ -573,9 +573,9 @@ class Category implements Translatable, iApyDataGridFilePath
     /**
      * Remove children
      *
-     * @param \ZIMZIM\CategoryProductBundle\Entity\Category $children
+     * @param Category $children
      */
-    public function removeChild(\ZIMZIM\CategoryProductBundle\Entity\Category $children)
+    public function removeChild(Category $children)
     {
         $this->children->removeElement($children);
     }

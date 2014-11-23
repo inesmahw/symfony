@@ -13,7 +13,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
  * Product
  *
  * @ORM\Table(name="default_product")
- * @ORM\Entity(repositoryClass="ZIMZIM\CategoryProductBundle\Entity\ProductRepository")
+ * @ORM\Entity(repositoryClass="ProductRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Product implements Translatable, iApyDataGridFilePath
@@ -138,7 +138,7 @@ class Product implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="CategoryProduct", mappedBy="categories")
      **/
     private $categoryproducts;
 

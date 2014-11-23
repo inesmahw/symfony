@@ -148,6 +148,7 @@
                 {{ block('zz_form_widget_compound') }}
             {% endspaceless %}
             <script>
+                var numberElement = 0;
                 var ul = document.querySelector('ul.container');
                 var childs = ul.childNodes;
                 var a = document.createElement('a');
@@ -163,6 +164,7 @@
                 for (var i in childs) {
                     var ulli = childs[i];
                     if (ulli.tagName === 'LI') {
+                        numberElement++;
                         var classname = ulli.className.split(' ');
                         var liok = false;
                         for (var j in classname) {
@@ -208,13 +210,27 @@
                 }
 
                 function addElement(){
-                    collectionHolder = $(ul);
-                    var prototype = collectionHolder.attr('data-prototype');
+                    collectionHolder = ul;
+                    var prototype = collectionHolder.getAttribute('data-prototype');
                     prototype = prototype.replace(/__name__label__/g, name);
-                    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
-                    var $newFormLi = $('<li class="content th"></li>').append(newForm);
-                    collectionHolder.append($newFormLi);
+                    var newForm = prototype.replace(/__name__/g, numberElement);
+                    var li = document.createElement('li');
+                    li.className = 'content th';
+                    var content = createHtmlElementByString(newForm);
+                    li.appendChild(content);
+                    collectionHolder.appendChild(li);
                 }
+
+                function createHtmlElementByString(htmlStr) {
+                    var frag = document.createDocumentFragment(),
+                            temp = document.createElement('div');
+                    temp.innerHTML = htmlStr;
+                    while (temp.firstChild) {
+                        frag.appendChild(temp.firstChild);
+                    }
+                    return frag;
+                }
+
             </script>
         {% endblock zimzim_categoryproductbundle_zimzimcollection_widget %}
 

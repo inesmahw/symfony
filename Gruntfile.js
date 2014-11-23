@@ -105,7 +105,8 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('default', ['compass', 'autoprefixer', 'copy', 'jshint', 'uglify', 'cssmin']);
-    grunt.registerTask('jsdev', ['copy:js', 'jshint']);
+    grunt.registerTask('dev', ['jsdev', 'jshint']);
+    grunt.registerTask('jsdev', ['copy:js', 'css']);
     grunt.registerTask('js', ['copy:js', 'jshint', 'uglify']);
     grunt.registerTask('css', ['compass', 'autoprefixer', 'copy:css', 'cssmin']);
     grunt.registerTask('init', ['copy:init', 'default']);

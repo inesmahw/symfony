@@ -16,17 +16,18 @@ class CategoryProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('product');
+        $builder->add('position');
+
         $builder->addEventListener(
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) {
                 $categoryproduct = $event->getData();
                 $form = $event->getForm();
-                $id_category = null;
-                if ($categoryproduct && $categoryproduct->getId() !== null) {
-                    $id_category = $categoryproduct->getId();
-                    if ($id_category === 1) {
-                        return;
-                    }
+                $category = null;
+                if (isset($categoryproduct) && $categoryproduct->getCategory() === null) {
+                    $form->remove('product');
+                    $form->remove('position');
                 };
             }
         );
@@ -40,8 +41,10 @@ class CategoryProductType extends AbstractType
         $resolver->setDefaults(
             array(
                 'data_class' => 'ZIMZIM\CategoryProductBundle\Entity\CategoryProduct',
+                'label' => '__name__label__',
                 'attr' => array(
-                    'class' => 'zimzim-panel'
+                    'class' => 'zimzim-panel',
+                     'no-label' => 'no-label'
                 ),
                 'cascade_validation' => true
             )

@@ -25,6 +25,8 @@ views:
         contact: "Contact"
         product: "Nos produits"
         category: "Category"
+        adminproduct: "Produits"
+        admincategory: "Categories"
     HWIOAuthBundle:
         connect:
             login:

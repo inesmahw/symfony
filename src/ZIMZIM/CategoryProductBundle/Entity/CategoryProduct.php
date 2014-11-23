@@ -27,7 +27,7 @@ class CategoryProduct
      *
      * @Gedmo\SortableGroup
      *
-     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Category", inversedBy="categoryproducts", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Category", inversedBy="categoryproducts", cascade={"persist"})
      * @ORM\JoinColumn(name="id_category", referencedColumnName="id", nullable=FALSE)
      **/
     private $category;
@@ -35,7 +35,7 @@ class CategoryProduct
     /**
      * @var Product
      *
-     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Product", inversedBy="categoryproducts", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="ZIMZIM\CategoryProductBundle\Entity\Product", inversedBy="categoryproducts", cascade={"persist"})
      * @ORM\JoinColumn(name="id_product", referencedColumnName="id", nullable=FALSE)
      **/
     private $product;

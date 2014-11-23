@@ -2,6 +2,7 @@
 
 namespace ZIMZIM\CategoryProductBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -194,12 +195,31 @@ class CategoryController extends MainController
             throw $this->createNotFoundException('Unable to find Category entity.');
         }
 
+        $originalCategoryProducts = new ArrayCollection();
+        foreach ($entity->getCategoryproducts() as $CategoryProduct) {
+            $originalCategoryProducts->add($CategoryProduct);
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
+
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $entity->preUpload();
+
+            foreach ($entity->getCategoryproducts() as $CategoryProduct) {
+                if($CategoryProduct->getCategory() === null){
+                    $CategoryProduct->setCategory($entity);
+                }
+            }
+
+            foreach($originalCategoryProducts as $CategoryProduct){
+                if($entity->getCategoryproducts()->contains($CategoryProduct) === false){
+                    $em->remove($CategoryProduct);
+                }
+            }
+            $em->persist($entity);
             $this->updateSuccess();
             $em->flush();
 

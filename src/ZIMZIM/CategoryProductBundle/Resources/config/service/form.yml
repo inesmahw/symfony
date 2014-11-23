@@ -9,3 +9,7 @@ services:
         arguments: [ ]
         tags:
             - { name: form.type, alias: zimzim_categoryproductbundle_categoryproducttype }
+    zimzim_categoryproduct.form.type.zimzimcollectionformtype:
+        class: ZIMZIM\CategoryProductBundle\Form\Type\ZIMZIMCollectionType
+        tags:
+            - { name: form.type, alias: zimzim_categoryproductbundle_zimzimcollection }

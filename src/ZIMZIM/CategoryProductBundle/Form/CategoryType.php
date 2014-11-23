@@ -62,34 +62,48 @@ class CategoryType extends AbstractType
                     }
                 }
                 $form->
-                    add(
-                        'parent',
-                        'entity',
-                        array(
-                            'class' => 'ZIMZIMCategoryProductBundle:Category',
-                            'property' => 'indentedTitle',
-                            'query_builder' => function (CategoryRepository $er) use ($id_category) {
-                                    $query = $er->createQueryBuilder('c');
-                                    if (isset($id_category)) {
-                                        $query->where('c.id <> :category')
-                                            ->setParameter('category', $id_category);
-                                    }
-                                    $query->orderBy('c.root', 'ASC')
-                                        ->addOrderBy('c.lft', 'ASC');
-
-                                    return $query;
-                                },
-                            'label' => 'admincategory.entity.parent',
-                            'translation_domain' => 'ZIMZIMCategoryProduct'
-                        )
-                    );
-                $form->add(
-                    'categoryproducts',
-                    'collection',
+                add(
+                    'parent',
+                    'entity',
                     array(
-                        'type' => 'zimzim_categoryproductbundle_categoryproducttype'
+                        'class' => 'ZIMZIMCategoryProductBundle:Category',
+                        'property' => 'indentedTitle',
+                        'query_builder' => function (CategoryRepository $er) use ($id_category) {
+                            $query = $er->createQueryBuilder('c');
+                            if (isset($id_category)) {
+                                $query->where('c.id <> :category')
+                                    ->setParameter('category', $id_category);
+                            }
+                            $query->orderBy('c.root', 'ASC')
+                                ->addOrderBy('c.lft', 'ASC');
+
+                            return $query;
+                        },
+                        'label' => 'admincategory.entity.parent',
+                        'translation_domain' => 'ZIMZIMCategoryProduct'
                     )
                 );
+                if ($category && $category->getId() !== null) {
+                    $form->add(
+                        'categoryproducts',
+                        'zimzim_categoryproductbundle_zimzimcollection',
+                        array(
+                            'type' => 'zimzim_categoryproductbundle_categoryproducttype',
+                            'allow_add' => true,
+                            'allow_delete' => true,
+                            'by_reference' => true,
+                            'label' => '__name__label__',
+                            'attr' => array(
+                                'no-label' => 'no-label',
+                                'class' => 'small-block-grid-1 large-block-grid-2 container',
+                                'datachildclass' => 'ulchildren',
+                                'dataaddname' => 'form.cigarettetype.price.dataaddname',
+                                'dataname' => 'form.cigarettetype.price.dataname',
+                                'datadeletename' => 'form.cigarettetype.price.datadeletename'
+                            )
+                        )
+                    );
+                }
             }
         );
     }

@@ -73,39 +73,40 @@
 
     <div class="row full-width">
         <div class="small-10 small-centered columns">
-            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+            <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
                 {% for child in entity.children %}
-                    <li>
-                        <div class="row">
-                            <div class="small-10 small-centered columns">
-                                <div class="row case-category">
-                                    <div class="small-6 small-centered columns text-center">
-                                        {% if child.webpath != null %}
-                                            <img class="img-medium" src="/{{ child.webpath }}"
-                                                 alt="{{ child.description }}"/>
-                                        {% endif %}
-                                    </div>
-                                    <div class="small-12 columns">
-                                        <h3 class="text-center">
-                                            <a {% if child.slug == "" %}
-                                                href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
-                                            {% else %}
-                                                href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':child.slug}) }}"
-                                            {% endif %}
-                                                    >
-                                                {{ child.name }}
-                                            </a>
-                                        </h3>
-                                    </div>
-                                    {% if child.description != null %}
-                                        <div class="small-12 columns">
-                                            <p>
-                                                {{ child.description }}
-                                            </p>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
+                    <li class="category-box">
+                        <div class="fullfull">
+                            <a class="front" {% if child.slug == "" %}
+                                href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                            {% else %}
+                                href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':child.slug}) }}"
+                            {% endif %}
+                                    >
+                                {% if child.webpath != null %}
+                                    <img class="img-medium" src="/{{ child.webpath }}"
+                                         alt="{{ child.name }} - {{ child.description }}"/>
+                                {% endif %}
+                            </a>
+                            <a class="behind" {% if child.slug == "" %}
+                                href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                            {% else %}
+                                href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':child.slug}) }}"
+                            {% endif %}
+                                    >
+                                <img class="img-medium fake-image" src="/{{ child.webpath }}"
+                                     alt="{{ child.name }} - {{ child.description }}"/>
+                            </a>
+                            <h3 class="text-center h3category">
+                                <a {% if child.slug == "" %}
+                                    href="{{ path('zimzim_categoryproduct_category_listslugnull') }}"
+                                {% else %}
+                                    href="{{ path('zimzim_categoryproduct_category_listslug', {'slug':child.slug}) }}"
+                                {% endif %}
+                                        >
+                                    {{ child.name }}
+                                </a>
+                            </h3>
                         </div>
                     </li>
                 {% endfor %}

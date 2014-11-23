@@ -91,21 +91,14 @@
 {% endblock button_widget %}
 
 
-{#% block form_end %}
+{% block form_end %}
     {% spaceless %}
         {% if not render_rest is defined or render_rest %}
             {{ form_rest(form) }}
         {% endif %}
-        {% if form.vars.action|preg_match('/delete/i') == false %}
-            <div class="row">
-                <div class="large-12 columns text-right">
-                    <small class="form_info"><i class="star"></i> {{ 'form.fieldrequired'|trans }}</small>
-                </div>
-            </div>
-        {% endif %}
         </form>
     {% endspaceless %}
-{% endblock form_end %#}
+{% endblock form_end %}
 
 
 {% block centauretime_widget %}
@@ -117,30 +110,133 @@
             </li>
             <li>{{ form_widget(form.minute, vars) }}</li>
         </ul>
-    {% endspaceless %}
-{% endblock centauretime_widget %}
+        {% endspaceless %}
+        {% endblock centauretime_widget %}
 
-{% block form_label %}
-    {% spaceless %}
-        {% if label is not sameas(false) %}
-            {% if not compound %}
-                {% set label_attr = label_attr|merge({'for': id}) %}
-            {% endif %}
-            {% if required %}
-                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-            {% endif %}
-            {% if label is empty %}
-                {% set label = name|humanize %}
-            {% endif %}
-            {% if form.vars.errors|length > 0 %}
-                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' error')|trim}) %}
-            {% endif %}
-            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-                {{ label|trans({}, translation_domain) }}
-                {% if form.vars.required %}
-                    <i class="star"></i>
+        {% block form_label %}
+            {% spaceless %}
+                {% if label is not sameas(false) %}
+                    {% if not compound %}
+                        {% set label_attr = label_attr|merge({'for': id}) %}
+                    {% endif %}
+                    {% if required %}
+                        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+                    {% endif %}
+                    {% if label is empty %}
+                        {% set label = name|humanize %}
+                    {% endif %}
+                    {% if form.vars.errors|length > 0 %}
+                        {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' error')|trim}) %}
+                    {% endif %}
+                    <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+                    {{ label|trans({}, translation_domain) }}
+                    {% if form.vars.required %}
+                        <i class="star"></i>
+                    {% endif %}
+                    </label>
                 {% endif %}
-            </label>
-        {% endif %}
-    {% endspaceless %}
-{% endblock form_label %}
+            {% endspaceless %}
+        {% endblock form_label %}
+
+
+
+        {% block zimzim_categoryproductbundle_zimzimcollection_widget %}
+            {% spaceless %}
+                {% if prototype is defined %}
+                    {% set attr = attr|merge({'data-prototype': form_row(prototype) }) %}
+                {% endif %}
+                {{ block('zz_form_widget_compound') }}
+            {% endspaceless %}
+            <script>
+                var ul = document.querySelector('ul.container');
+                var childs = ul.childNodes;
+                var a = document.createElement('a');
+                a.onclick = function () {
+                    addElement();
+                };
+                a.className = 'add_content small button';
+                a.innerHTML = '{{ attr.dataaddname|trans }}';
+                var li = document.createElement('li');
+                li.className = 'text-center';
+                li.appendChild(a);
+                ul.appendChild(li);
+                for (var i in childs) {
+                    var ulli = childs[i];
+                    if (ulli.tagName === 'LI') {
+                        var classname = ulli.className.split(' ');
+                        var liok = false;
+                        for (var j in classname) {
+                            if (classname[j] === 'ulchildren') {
+                                var liok = true;
+                            }
+                        }
+                        if (liok) {
+                            var divrow = createDivRow();
+                            var divcolumns = createDivColumns();
+                            var alink = createLink('{{ attr.dataname|trans }}');
+                            alink.onclick = function () {
+                                deleteElement(this.parentNode.parentNode.parentNode, '{{ attr.datadeletename|trans }}')
+                            };
+                            divrow.appendChild(divcolumns);
+                            divcolumns.appendChild(alink);
+                            ulli.appendChild(divrow);
+                        }
+                    }
+                }
+
+                function createLink(name) {
+                    var alink = document.createElement('a');
+                    alink.className = 'tiny button';
+                    alink.innerHTML = name;
+                    return alink;
+                }
+
+                function createDivColumns() {
+                    var divcolumns = document.createElement('div');
+                    divcolumns.className = 'large-12 columns text-center';
+                    return divcolumns
+                }
+
+                function createDivRow() {
+                    var divrow = document.createElement('div');
+                    divrow.className = 'row';
+                    return divrow
+                }
+
+                function deleteElement(liform, namedelete) {
+                    ul.removeChild(liform);
+                }
+
+                function addElement(){
+                    collectionHolder = $(ul);
+                    var prototype = collectionHolder.attr('data-prototype');
+                    prototype = prototype.replace(/__name__label__/g, name);
+                    var newForm = prototype.replace(/__name__/g, collectionHolder.children().length);
+                    var $newFormLi = $('<li class="content th"></li>').append(newForm);
+                    collectionHolder.append($newFormLi);
+                }
+            </script>
+        {% endblock zimzim_categoryproductbundle_zimzimcollection_widget %}
+
+
+        {% block zz_form_widget_compound %}
+            {% spaceless %}
+                <ul {{ block('widget_container_attributes') }}>
+                    {% if form.parent is empty %}
+                        {{ form_errors(form) }}
+                    {% endif %}
+                    {{ block('zz_form_rows') }}
+                    {{ form_rest(form) }}
+                </ul>
+            {% endspaceless %}
+        {% endblock zz_form_widget_compound %}
+
+        {% block zz_form_rows %}
+            {% spaceless %}
+                {% for child in form %}
+                    <li class="{{ attr.datachildclass|trans }} th">
+                        {{ form_widget(child) }}
+                    </li>
+                {% endfor %}
+            {% endspaceless %}
+        {% endblock zz_form_rows %}

@@ -1,3 +1,65 @@
 @import "settings";
 @import "compass/css3";
 @import "_icoonmoon";
+
+li.category-box {
+    background: #FFFFFF;
+    padding: 0;
+    @include single-transition(all, 1s);
+    div.fullfull {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        a.front {
+            width: 100%;
+            height: 100%;
+            img {
+                z-index: 100;
+            }
+        }
+        a.behind {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            transform: translateX(100%);
+            transition-duration: 1s;
+            img.fake-image {
+                z-index: 101;
+            }
+        }
+        h3.h3category {
+            position: absolute;
+            bottom: -75px;
+            left: 0;
+            right: 0;
+            height: 75px;
+            transform-origin: 0 0;
+            transition-duration: 1s;
+            font-weight: bold;
+            line-height: 75px;
+            z-index: 102;
+        }
+    }
+}
+
+li.category-box:hover {
+    @include single-transition(all, 1s);
+    div.fullfull {
+        a.behind {
+            transform: none;
+            transition-duration: 1s;
+            img.fake-image {
+            }
+        }
+        h3.h3category {
+            transform: translateY(-75px);
+            transform-origin: 0 0;
+            transition-duration: 1s;
+            background: #F4F4F4;
+        }
+    }
+}

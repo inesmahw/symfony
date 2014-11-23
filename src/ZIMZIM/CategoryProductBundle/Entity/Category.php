@@ -108,7 +108,7 @@ class Category implements Translatable, iApyDataGridFilePath
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="ZIMZIM\CategoryProductBundle\Entity\CategoryProduct", mappedBy="category",cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      **/
     private $categoryproducts;

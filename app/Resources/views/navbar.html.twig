@@ -19,7 +19,23 @@
             </ul>
             <section class="top-bar-section">
                 <ul class="right">
-                    <li class="divider hide-for-small"></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="divider"></li>
+                        <li>
+                            <a class="" href="{{ path('zimzim_categoryproduct_category') }}">
+                                <span class="icon-medium icon-file vertical-middle"></span>
+                                {{ 'views.navbar.admincategory'|trans }}
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="" href="{{ path('zimzim_categoryproduct_product') }}">
+                                <span class="icon-medium icon-address-book vertical-middle"></span>
+                                {{ 'views.navbar.adminproduct'|trans }}
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="divider"></li>
                     <li>
                         <a class="" href="{{ path('zimzim_categoryproduct_category_listslugnull') }}">
                             <span class="icon-medium icon-file vertical-middle"></span>

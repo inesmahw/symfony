@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2694dd1d350d42da76d720d6c2fed8b1",
+    "hash": "65fe4cf3c4a39a19c23904b3076c578e",
     "packages": [
         {
             "name": "apy/datagrid-bundle",
@@ -412,12 +412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "6458b0bd6e62817e961a9611959a67b5f8622b59"
+                "reference": "a67db17b3d5bf373ba7a827db52dd0c7066cb08a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/6458b0bd6e62817e961a9611959a67b5f8622b59",
-                "reference": "6458b0bd6e62817e961a9611959a67b5f8622b59",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a67db17b3d5bf373ba7a827db52dd0c7066cb08a",
+                "reference": "a67db17b3d5bf373ba7a827db52dd0c7066cb08a",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-11-05 14:17:28"
+            "time": "2014-10-27 17:14:07"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -874,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "76e1a469ef3c4af4ef9d60c769822d4283809217"
+                "reference": "20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/76e1a469ef3c4af4ef9d60c769822d4283809217",
-                "reference": "76e1a469ef3c4af4ef9d60c769822d4283809217",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3",
+                "reference": "20c6bfd360b3db9e9bc53e5ae37afe1a22dccca3",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-05 12:19:29"
+            "time": "2014-10-23 05:01:59"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -3050,6 +3050,48 @@
                 "negotiation"
             ],
             "time": "2014-10-02 07:26:00"
+        },
+        {
+            "name": "zimzim62000/categoryproduct-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zimzim62000/CategoryProductBundle.git",
+                "reference": "3eb9494677ed807cfcf0378e451695a6712e40b1"
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/symfony": ">=2.0.0",
+                "twig/twig": ">=1.5.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x@dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ZIMZIM\\CategoryProductBundle\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zimmmermann Fabien",
+                    "email": "zimzim62000@gmail.com"
+                }
+            ],
+            "description": "Symfony2 Category+Product Bundle",
+            "homepage": "https://github.com/zimzim62000/CategoryProductBundle",
+            "keywords": [
+                "Symfony",
+                "categories",
+                "products"
+            ],
+            "time": "2014-11-23 17:26:51"
         }
     ],
     "packages-dev": [
@@ -3116,7 +3158,8 @@
         "stof/doctrine-extensions-bundle": 20,
         "apy/datagrid-bundle": 20,
         "white-october/pagerfanta-bundle": 20,
-        "jasny/twig-extensions": 20
+        "jasny/twig-extensions": 20,
+        "zimzim62000/categoryproduct-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

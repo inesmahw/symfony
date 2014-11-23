@@ -1,7 +1,3 @@
-zimzim_bundles_category_product:
-    resource: "@ZIMZIMCategoryProductBundle/Resources/config/routing.yml"
-    prefix:   /
-
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix: /user/login
@@ -45,3 +41,7 @@ twitter_login:
 zimzim_bundles_user:
     resource: "@ZIMZIMBundlesUserBundle/Resources/config/routing.yml"
     prefix: /
+
+zimzim_bundles_category_product:
+    resource: "@ZIMZIMCategoryProductBundle/Resources/config/routing.yml"
+    prefix:   /

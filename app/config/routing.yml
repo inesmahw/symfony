@@ -42,6 +42,6 @@ zimzim_bundles_user:
     resource: "@ZIMZIMBundlesUserBundle/Resources/config/routing.yml"
     prefix: /
 
-zimzim_bundles_category_product:
-    resource: "@ZIMZIMCategoryProductBundle/Resources/config/routing.yml"
+zimzimcp:
+    resource: "@ZIMZIMCPBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,3 @@
+zimzim_categoryproduct_default:
+    resource: "@ZIMZIMCategoryProductBundle/Resources/config/routing.yml"
+    prefix:   /

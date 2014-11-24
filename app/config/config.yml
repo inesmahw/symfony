@@ -9,9 +9,7 @@ imports:
     - { resource: config/twig.yml }
     - { resource: config/jms_i18n_routing.yml }
     - { resource: config/service_doctrine_extensions.yml }
-
-zimzim_category_product:
-    max_element: 1
+    - { resource: config/zimzim_categoryproduct.yml }
 
 framework:
     #esi:             ~

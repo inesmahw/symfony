@@ -1,0 +1,7 @@
+zimzim_category_product:
+    max_element           : 1
+    category_class        : ZIMZIM\CPBundle\Entity\Category
+    category_repo         : ZIMZIM\CPBundle\Entity\CategoryRepository
+    categoryproduct_class : ZIMZIM\CPBundle\Entity\CategoryProduct
+    product_class         : ZIMZIM\CPBundle\Entity\Product
+    product_repo          : ZIMZIM\CPBundle\Entity\ProductRepository

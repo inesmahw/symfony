@@ -1,0 +1,4 @@
+services:
+#    zimzimcp.example:
+#        class: ZIMZIM\CPBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

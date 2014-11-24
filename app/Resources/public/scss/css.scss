@@ -3,27 +3,62 @@
 @import "_foundation_mod";
 
 $grey: #333333;
-$heightfooter: 150px;
+$heightfooter: 300px;
 
 html, body {
     height: 100%;
 }
 
 div.container {
-    hight: auto;
+    height: auto;
     min-height: 100%;
     padding-bottom: $heightfooter;
 }
 
-footer.footer {
-    background: $grey;
-    height: $heightfooter;
+/******************************* footer *************************************/
+.footer {
+    background-color: $grey;
+    padding: 2rem 4rem;
+    text-align: center;
     margin-top: -$heightfooter;
-    clear: both;
-    max-width: 100%;
+    height: $heightfooter;
+    color: $white;
+}
+.footer {
     h4 {
-        color: #FFF;
-        padding: 2rem;
+        color: $white;
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-top: 2.5rem;
+        margin-bottom: 10px;
+    }
+    p {
+        font-weight: 300;
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 40.063em) {
+    .footer {
+        .columns:nth-child(n+2) {
+            border-left: 1px solid scale-color(#fff, $lightness: -30%);
+            min-height: 220px;
+        }
+    }
+}
+
+.footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    a {
+        color: $white;
+        font-weight: 300;
+        font-size: .8rem;
+    }
+    li {
+        margin-top: .5rem;
     }
 }
 
@@ -73,34 +108,46 @@ nav.top-bar span.title {
         color: $white;
     }
 }
+
 /************** COLOR **********************/
-.bg-lightwhite{
+.bg-lightwhite {
     background: $lightwhite;
 }
-.border-lightwhite{
-    border:1px SOLID $lightwhite;
+
+.border-lightwhite {
+    border: 1px SOLID $lightwhite;
 }
+
 /***************** category *******************/
-h1.title-category{
+.title-category {
     padding: 1rem 0 0.5rem 0;
     font-weight: bold;
 }
-.fake-h1-category{
+
+.fake-h1-category {
     height: $h1-font-size;
     margin-top: $header-top-margin;
     margin-bottom: $header-bottom-margin;
     display: block;
     padding: 1rem 0 0.5rem;
 }
-.case-category{
+
+.case-category {
     background: $lightwhite;
-    border:1px DASHED $black;
+    border: 1px DASHED $black;
 }
+
 /************* image **************/
-img.img-medium{
+img.img-medium {
 
 }
+
 /********************/
-select.select-multiple{
+select.select-multiple {
     height: 9rem !important;
+}
+
+/****************** */
+hr.category{
+    margin-bottom: 2.5rem;
 }

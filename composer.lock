@@ -412,12 +412,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "e35ce0486a1d161e739bed38fde27b7cc921f5f0"
+                "reference": "40fd004725b4aa902aea170cd15152b06a6faba0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/e35ce0486a1d161e739bed38fde27b7cc921f5f0",
-                "reference": "e35ce0486a1d161e739bed38fde27b7cc921f5f0",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/40fd004725b4aa902aea170cd15152b06a6faba0",
+                "reference": "40fd004725b4aa902aea170cd15152b06a6faba0",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +475,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-11-11 11:37:53"
+            "time": "2014-11-24 15:49:52"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -3059,7 +3059,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zimzim62000/CategoryProductBundle.git",
-                "reference": "3eb9494677ed807cfcf0378e451695a6712e40b1"
+                "reference": "698f776bd05f4a667c309afd984024c67f19bb60"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -3093,7 +3093,7 @@
                 "categories",
                 "products"
             ],
-            "time": "2014-11-23 17:26:51"
+            "time": "2014-11-24 17:04:32"
         }
     ],
     "packages-dev": [

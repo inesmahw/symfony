@@ -156,7 +156,7 @@
                     addElement();
                 };
                 a.className = 'add_content small button';
-                a.innerHTML = '{{ attr.dataaddname|trans }}';
+                a.innerHTML = '{{ attr.dataaddname|trans({}, 'ZIMZIMCategoryProduct') }}';
                 var li = document.createElement('li');
                 li.className = 'text-center';
                 li.appendChild(a);
@@ -175,9 +175,9 @@
                         if (liok) {
                             var divrow = createDivRow();
                             var divcolumns = createDivColumns();
-                            var alink = createLink('{{ attr.dataname|trans }}');
+                            var alink = createLink('{{ attr.datadeletename|trans({}, 'ZIMZIMCategoryProduct') }}');
                             alink.onclick = function () {
-                                deleteElement(this.parentNode.parentNode.parentNode, '{{ attr.datadeletename|trans }}')
+                                deleteElement(this.parentNode.parentNode.parentNode)
                             };
                             divrow.appendChild(divcolumns);
                             divcolumns.appendChild(alink);
@@ -205,7 +205,7 @@
                     return divrow
                 }
 
-                function deleteElement(liform, namedelete) {
+                function deleteElement(liform) {
                     ul.removeChild(liform);
                 }
 

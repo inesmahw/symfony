@@ -9,6 +9,10 @@ $grey: #333333;
 $white: #FFFFFF;
 $lightwhite: #F6F6F6;
 
+$darkgrey: #696C6D;
+$darkblue: #4A597E;
+$blue: #8598BD;
+
 
 //
 // FOUNDATION SETTINGS
@@ -62,8 +66,8 @@ $lightwhite: #F6F6F6;
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
+$primary-color: $blue;
+$secondary-color: $darkblue;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -129,7 +133,7 @@ $lightwhite: #F6F6F6;
 // $header-font-family: $body-font-family;
 // $header-font-weight: normal;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: $darkgrey;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -179,7 +183,7 @@ $lightwhite: #F6F6F6;
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: rem-calc(20);
+$hr-margin: rem-calc(8);
 
 // We use these to style lists
 // $list-style-position: outside;
@@ -300,7 +304,7 @@ $lightwhite: #F6F6F6;
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to set the background color for the breadcrumb container.
-// $crumb-bg: scale-color($secondary-color, $lightness: 55%);
+$crumb-bg: $white; //scale-color($secondary-color, $lightness: 55%);
 
 // We use these to set the padding around the breadcrumbs.
 // $crumb-padding: rem-calc(9 14 9);
@@ -316,7 +320,7 @@ $lightwhite: #F6F6F6;
 // We use these to set various text styles for breadcrumbs.
 // $crumb-font-size: rem-calc(11);
 // $crumb-font-color: $primary-color;
-// $crumb-font-color-current: #333;
+$crumb-font-color-current: $secondary-color;
 // $crumb-font-color-unavailable: #999;
 // $crumb-font-transform: uppercase;
 // $crumb-link-decor: underline;

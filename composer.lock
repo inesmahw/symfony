@@ -874,12 +874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac"
+                "reference": "bf5003f25e45e6f044f070c876e4401087dff004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/88ce68e733a02b84eb229c8447409b2ed5cf71ac",
-                "reference": "88ce68e733a02b84eb229c8447409b2ed5cf71ac",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/bf5003f25e45e6f044f070c876e4401087dff004",
+                "reference": "bf5003f25e45e6f044f070c876e4401087dff004",
                 "shasum": ""
             },
             "require": {
@@ -941,7 +941,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-21 20:54:00"
+            "time": "2014-11-25 08:42:10"
         },
         {
             "name": "friendsofsymfony/rest-bundle",
@@ -3059,7 +3059,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zimzim62000/CategoryProductBundle.git",
-                "reference": "698f776bd05f4a667c309afd984024c67f19bb60"
+                "reference": "6b58c663ce199621643f07e9015f495095905c46"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -3069,7 +3069,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x@dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -3093,7 +3093,7 @@
                 "categories",
                 "products"
             ],
-            "time": "2014-11-24 17:04:32"
+            "time": "2014-11-25 11:11:46"
         }
     ],
     "packages-dev": [

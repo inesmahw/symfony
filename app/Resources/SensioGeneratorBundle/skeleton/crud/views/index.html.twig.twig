@@ -10,23 +10,19 @@
 
         {{ "{% block page %}" }}
             <div class="row">
-                <div class="small-12 columns">
+                <div class="small-10 columns">
                     <h1 class="text-center headerpagehome">
                         {{ entity }} list
                     </h1>
                 </div>
-            </div>
             {% if 'new' in actions %}
-                <div class="row">
-                    <div class="small-12 columns">
+                    <div class="small-2 columns">
                         <a class="tiny button round" href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}">
                             {{ "{{ 'button.create'|trans }}" }}
                         </a>
                     </div>
                 </div>
             {% endif %}
-
-            {{ "{{ grid_search(grid) }}" }}
 
             {{ "{{ grid(grid) }}" }}
 

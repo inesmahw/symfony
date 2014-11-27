@@ -27,6 +27,7 @@ views:
         category: "Category"
         adminproduct: "Produits"
         admincategory: "Categories"
+        adminitemhome: "Carrousel"
     HWIOAuthBundle:
         connect:
             login:

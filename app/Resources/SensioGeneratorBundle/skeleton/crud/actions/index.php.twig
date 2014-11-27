@@ -17,8 +17,12 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
+
+    $manager = $this->container->get('{{ route_name_prefix  }}');
+
     $data = array(
-        'entity'     => '{{ bundle }}:{{ entity|replace({'\\': '/'}) }}',
+        'manager' => $manager,
+        'dir'     => '{{ bundle }}:{{ entity|replace({'\\': '/'}) }}',
         'show'       => '{{ route_name_prefix }}_show',
         'edit'       => '{{ route_name_prefix }}_edit'
     );

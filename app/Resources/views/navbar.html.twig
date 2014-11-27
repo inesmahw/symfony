@@ -19,22 +19,6 @@
             </ul>
             <section class="top-bar-section">
                 <ul class="right">
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="divider"></li>
-                        <li>
-                            <a class="" href="{{ path('zimzim_categoryproduct_category') }}">
-                                <span class="icon-medium icon-file vertical-middle"></span>
-                                {{ 'views.navbar.admincategory'|trans }}
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="" href="{{ path('zimzim_categoryproduct_product') }}">
-                                <span class="icon-medium icon-address-book vertical-middle"></span>
-                                {{ 'views.navbar.adminproduct'|trans }}
-                            </a>
-                        </li>
-                    {% endif %}
                     <li class="divider"></li>
                     <li>
                         <a class="" href="{{ path('zimzim_categoryproduct_category_listslugnull') }}">
@@ -72,6 +56,43 @@
                             {% endfor %}
                         </ul>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="has-dropdown">
+                            <a href="#">
+                                <span class="icon-medium icon-cog vertical-middle"></span>
+                            </a>
+                            <ul class="dropdown">
+                                <li class="title back js-generated">
+                                    <h5>
+                                        <a href="javascript:void(0)">
+                                            {{ 'views.navbar.back'|trans }}
+                                        </a>
+                                    </h5>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="" href="{{ path('zimzim_categoryproduct_category') }}">
+                                        <span class="icon-medium icon-file vertical-middle"></span>
+                                        {{ 'views.navbar.admincategory'|trans }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="" href="{{ path('zimzim_categoryproduct_product') }}">
+                                        <span class="icon-medium icon-address-book vertical-middle"></span>
+                                        {{ 'views.navbar.adminproduct'|trans }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="" href="{{ path('zimzim_categoryproduct_itemhome') }}">
+                                        <span class="icon-medium icon-address-book vertical-middle"></span>
+                                        {{ 'views.navbar.adminitemhome'|trans }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% endif %}
                 </ul>
             </section>
         </nav>

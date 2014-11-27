@@ -2859,12 +2859,12 @@
             "version": "v1.16.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twigphp/Twig.git",
+                "url": "https://github.com/fabpot/Twig.git",
                 "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/42f758d9fe2146d1f0470604fc05ee43580873fc",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/42f758d9fe2146d1f0470604fc05ee43580873fc",
                 "reference": "42f758d9fe2146d1f0470604fc05ee43580873fc",
                 "shasum": ""
             },
@@ -3059,7 +3059,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zimzim62000/CategoryProductBundle.git",
-                "reference": "b6cde605928b2b2a2c706b7ef4a2a41c44bf6c80"
+                "reference": "65f182684f1342c51acbaaa5fe1f483deca194fe"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -3093,7 +3093,7 @@
                 "categories",
                 "products"
             ],
-            "time": "2014-11-25 16:55:03"
+            "time": "2014-11-25 23:22:28"
         }
     ],
     "packages-dev": [

@@ -65,8 +65,8 @@
                             {% set tabLang = ['fr','en','ru','al','es'] %}
                             {% for lang in tabLang %}
                                 <li class="text-center">
-                                    <a class="" href="#">
-                                        {{ lang }}
+                                    <a class="" href="{{ path('zimzim_categoryproduct_home', {'_locale': lang}) }}">
+                                        <span class="country-flag flag-{{ lang }}"></span>
                                     </a>
                                 </li>
                             {% endfor %}
@@ -76,6 +76,4 @@
             </section>
         </nav>
     </div>
-
-
 {% endblock navbar %}

@@ -5,7 +5,7 @@
             <ul class="title-area">
                 <li class="name">
                     <span class="title">
-                        <a href="{{ path('zimzim_categoryproduct_itemhome') }}">
+                        <a href="{{ path('zimzim_categoryproduct_itemhomepublic') }}">
                             <span class="icon-medium icon-home vertical-middle"></span>
                             {{ 'views.navbar.title'|trans }}
                         </a>
@@ -49,7 +49,7 @@
                             {% set tabLang = ['fr','en','ru','al','es'] %}
                             {% for lang in tabLang %}
                                 <li class="text-center">
-                                    <a class="" href="{{ path('zimzim_categoryproduct_itemhome', {'_locale': lang}) }}">
+                                    <a class="" href="{{ path('zimzim_categoryproduct_itemhomepublic', {'_locale': lang}) }}">
                                         <span class="country-flag flag-{{ lang }}"></span>
                                     </a>
                                 </li>
@@ -85,7 +85,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a class="" href="{{ path('zimzim_categoryproduct_adminitemhome') }}">
+                                    <a class="" href="{{ path('zimzim_categoryproduct_itemhome') }}">
                                         <span class="icon-medium icon-address-book vertical-middle"></span>
                                         {{ 'views.navbar.adminitemhome'|trans }}
                                     </a>

@@ -46,3 +46,6 @@ web/resources/category/
 
 web/resources/product/
 !web/resources/product/.gitkeep
+
+web/resources/itemhome/
+!web/resources/itemhome/.gitkeep

@@ -6,3 +6,4 @@ zimzim_category_product:
     product_class         : ZIMZIM\CPBundle\Entity\Product
     product_repo          : ZIMZIM\CPBundle\Entity\ProductRepository
     product_form          : zimzim_cpbundle_producttype
+    itemhome_class        : ZIMZIM\CPBundle\Entity\ItemHome

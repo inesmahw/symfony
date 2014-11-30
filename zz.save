@@ -1,15 +1,31 @@
 #!/bin/bash
 
-php /home/%dir%/bin/console $@
+clean=true
 
-for param in $@
-do
-    if [ $param = "cache:clear" ] || [ $param = "cache:warmup" ]
-    then
-        chmod -R 0770 /home/%dir%/var/cache
-        chown -R %user%:www-data /home/%dir%/var/cache
-        chmod -R 0770 /home/%dir%/var/logs
-        chown -R %user%:www-data /home/%dir%/var/logs
-        break
-    fi
-done
+if [ $1 = "ccdev" ]
+then
+    php /home/%dir%/bin/console cache:clear
+    clean=true
+    break
+fi
+
+if [ $1 = "ccprod" ]
+then
+    grunt
+    php /home/%dir%/bin/console cache:clear --env=prod
+    php /home/%dir%/bin/console assetic:dump
+    clean=true
+    break
+fi
+
+if [ $clean = true ]
+then
+    sudo chmod -R 0770 /home/%dir%/var/cache
+    sudo chown -R %user%:www-data /home/%dir%/var/cache
+    sudo chmod -R 0770 /home/%dir%/var/logs
+    sudo chown -R %user%:www-data /home/%dir%/var/logs
+    break
+else
+    php /home/%dir%/bin/console $@
+    break
+fi

@@ -12,11 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ItemHomeCategory extends ItemHome
 {
+
+    const TYPE_ITEMHOME = 'category';
+
     /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Category")
-     * @ORM\JoinColumn(name="id_category", referencedColumnName="id", nullable=FALSE)
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id")
      *
      */
     protected $category;

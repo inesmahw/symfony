@@ -7,3 +7,6 @@ zimzim_category_product:
     product_repo          : ZIMZIM\CPBundle\Entity\ProductRepository
     product_form          : zimzim_cpbundle_producttype
     itemhome_class        : ZIMZIM\CPBundle\Entity\ItemHome
+    itemhome_data:
+        category_class    : ZIMZIM\CPBundle\Entity\ItemHomeCategory
+        product_class     : ZIMZIM\CPBundle\Entity\ItemHomeProduct

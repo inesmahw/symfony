@@ -2,7 +2,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\ItemHome as baseItemHome;
+use ZIMZIM\CategoryProductBundle\Model\ItemHome\ItemHome as baseItemHome;
 use Doctrine\ORM\Mapping as ORM;
 
 

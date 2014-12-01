@@ -3,7 +3,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\Category as baseCategory;
+use ZIMZIM\CategoryProductBundle\Model\CategoryProduct\Category as baseCategory;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;

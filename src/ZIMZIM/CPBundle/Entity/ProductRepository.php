@@ -2,7 +2,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\ProductRepository as BaseRepo;
+use ZIMZIM\CategoryProductBundle\Model\CategoryProduct\ProductRepository as BaseRepo;
 
 class ProductRepository extends BaseRepo
 {

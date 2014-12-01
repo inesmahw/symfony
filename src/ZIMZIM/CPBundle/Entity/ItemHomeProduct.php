@@ -41,4 +41,8 @@ class ItemHomeProduct extends ItemHome
 
         return $this;
     }
+
+    public function getAttributeLink(){
+        return array('slug' => $this->product->getSlug());
+    }
 }

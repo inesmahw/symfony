@@ -2,7 +2,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\ItemHomeRepository as BaseRepo;
+use ZIMZIM\CategoryProductBundle\Model\ItemHome\ItemHomeRepository as BaseRepo;
 
 class ItemHomeRepository extends BaseRepo
 {

@@ -15,6 +15,10 @@ div.container {
     padding-bottom: $heightfooter;
 }
 
+nav.top-bar{
+    z-index:99999;
+}
+
 /******************************* footer *************************************/
 .footer {
     background-color: $grey;

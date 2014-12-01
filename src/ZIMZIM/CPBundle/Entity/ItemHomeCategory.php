@@ -41,4 +41,8 @@ class ItemHomeCategory extends ItemHome
 
         return $this;
     }
+
+    public function getAttributeLink(){
+        return array('slug' => $this->category->getSlug());
+    }
 }

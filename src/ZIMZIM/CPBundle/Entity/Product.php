@@ -2,7 +2,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\Product as base;
+use ZIMZIM\CategoryProductBundle\Model\CategoryProduct\Product as baseProduct;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,7 +16,7 @@ use APY\DataGridBundle\Grid\Mapping as GRID;
  * @ORM\Entity(repositoryClass="ZIMZIM\CPBundle\Entity\ProductRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class Product extends base
+class Product extends baseProduct
 {
 
     /**
@@ -54,7 +54,7 @@ class Product extends base
 
 
     /**
-     * @ORM\OneToMany(targetEntity="CategoryProduct", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="CategoryProduct", mappedBy="product")
      * @ORM\OrderBy({"position" = "ASC"}))
      **/
     protected $categoryproducts;

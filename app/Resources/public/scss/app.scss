@@ -1,6 +1,7 @@
 @import "settings";
 @import "compass/css3";
 @import "_icoonmoon";
+@import "_owlcarousel";
 
 li.category-box {
     background: #FFFFFF;
@@ -47,3 +48,90 @@ li.category-box:hover {
     }
 }
 
+div.owl-item {
+    div.item {
+        position: relative;
+        @include single-transition(all, 1000ms, ease-in-out);
+        overflow: hidden;
+        h2.title-itemhomebox {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            transform-origin: 0 0;
+            transition-duration: 500ms;
+            transform: translateY(0);
+            font-weight: bold;
+            z-index: 100;
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            background: rgba(255, 255, 255, 0.35);
+            padding-top: 1rem;
+            a {
+                color: $secondary-color;
+            }
+        }
+        h3.title-itemhomebox {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform-origin: 0 0;
+            transition-duration: 500ms;
+            transform: translateX(-100%);
+            font-weight: bold;
+            z-index: 100;
+            font-size: 1.2rem;
+            line-height: 1.7rem;
+            background: rgba(255, 255, 255, 0.35);
+            padding-bottom: 1rem;
+            padding-right: 1rem;
+            a {
+                color: $secondary-color;
+            }
+        }
+        div.icon-carousel{
+            display:block;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            width: 75px;
+            cursor: pointer;
+            i{
+                position: relative;
+                padding:2rem;
+            }
+        }
+        div.icon-carousel:hover{
+            background: rgba(255,255,255,0.3);
+        }
+        div.icon-prev{
+            left: 0;
+        }
+        div.icon-next{
+            right: 0;
+        }
+    }
+}
+
+div.owl-item.active {
+    div.item {
+        position: relative;
+        @include single-transition(all, 1000ms, ease-in-out);
+        h2.title-itemhomebox {
+            transform: translateY(100%);
+            transform-origin: 0 0;
+            @include single-transition(all, 1000ms, ease-in-out);
+        }
+        h3.title-itemhomebox {
+            transform: translateX(0);
+            transform-origin: 0 0;
+            @include single-transition(all, 1000ms, ease-in-out);
+        }
+    }
+}
+
+div.owl-wrapper-outer {
+    position: relative;
+    z-index: 99;
+}

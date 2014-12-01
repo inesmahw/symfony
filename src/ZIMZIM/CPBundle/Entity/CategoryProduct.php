@@ -3,7 +3,7 @@
 
 namespace ZIMZIM\CPBundle\Entity;
 
-use ZIMZIM\CategoryProductBundle\Model\CategoryProduct as baseCategoryProduct;
+use ZIMZIM\CategoryProductBundle\Model\CategoryProduct\CategoryProduct as baseCategoryProduct;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 

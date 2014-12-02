@@ -1,7 +1,7 @@
 {% block navbar %}
 
     <div class="sticky">
-        <nav data-options="sticky_on: large" role="navigation" data-topbar="" class="top-bar">
+        <nav role="navigation" data-topbar="" class="top-bar">
             <ul class="title-area">
                 <li class="name">
                     <span class="title">
@@ -40,16 +40,15 @@
                         </a>
                         <ul class="dropdown">
                             <li class="title back js-generated">
-                                <h5>
-                                    <a href="javascript:void(0)">
-                                        {{ 'views.navbar.back'|trans }}
-                                    </a>
-                                </h5>
+                                <a href="javascript:void(0)">
+                                    {{ 'views.navbar.back'|trans }}
+                                </a>
                             </li>
                             {% set tabLang = ['fr','en','ru','al','es'] %}
                             {% for lang in tabLang %}
                                 <li class="text-center">
-                                    <a class="" href="{{ path('zimzim_categoryproduct_itemhomepublic', {'_locale': lang}) }}">
+                                    <a class=""
+                                       href="{{ path('zimzim_categoryproduct_itemhomepublic', {'_locale': lang}) }}">
                                         <span class="country-flag flag-{{ lang }}"></span>
                                     </a>
                                 </li>
@@ -63,11 +62,9 @@
                             </a>
                             <ul class="dropdown">
                                 <li class="title back js-generated">
-                                    <h5>
-                                        <a href="javascript:void(0)">
-                                            {{ 'views.navbar.back'|trans }}
-                                        </a>
-                                    </h5>
+                                    <a href="javascript:void(0)">
+                                        {{ 'views.navbar.back'|trans }}
+                                    </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>

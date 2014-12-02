@@ -90,25 +90,25 @@ div.owl-item {
                 color: $secondary-color;
             }
         }
-        div.icon-carousel{
-            display:block;
+        div.icon-carousel {
+            display: block;
             position: absolute;
             bottom: 0;
             top: 0;
             width: 75px;
             cursor: pointer;
-            i{
-                position: relative;
-                padding:2rem;
+            img.iconmove {
+                height: 100%;
+                opacity: 0.07;
             }
         }
-        div.icon-carousel:hover{
-            background: rgba(255,255,255,0.3);
+        div.icon-carousel:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
-        div.icon-prev{
+        div.icon-prev {
             left: 0;
         }
-        div.icon-next{
+        div.icon-next {
             right: 0;
         }
     }

@@ -28,3 +28,5 @@ parameters:
     facebook_secret: ThisTokenIsNotSoSecretChangeIt
     twitter_id: ThisTokenIsNotSoSecretChangeIt
     twitter_secret: ThisTokenIsNotSoSecretChangeIt
+
+    enabledlangage: #'fr','en','ru','al','es'

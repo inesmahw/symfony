@@ -10,6 +10,7 @@ imports:
     - { resource: config/jms_i18n_routing.yml }
     - { resource: config/service_doctrine_extensions.yml }
     - { resource: config/zimzim_categoryproduct.yml }
+    - { resource: config/zimzim_tools.yml }
 
 framework:
     #esi:             ~

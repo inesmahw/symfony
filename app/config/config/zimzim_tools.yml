@@ -1,2 +1,2 @@
 zimzim_tools:
-    uploadtinymce_class: ZIMZIM\ToolsBundle\Entity\UploadTinymce
+    uploadtinymce_class: ZIMZIM\CPBundle\Entity\UploadTinymce

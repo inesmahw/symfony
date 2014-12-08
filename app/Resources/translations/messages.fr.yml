@@ -43,7 +43,7 @@ views:
             feel: "Feel lightting c'est :"
             hometitle1: "Société Lilloise créée en 2002"
             homepara1: "Spécialisée dans l’étude et la fabrication de dispositifs d’éclairage à LED, FEEL se distingue par sa capacité d’innovation et sa réactivité"
-            hometitle2: "6 ans d’expérience" # dans l’utilisation de LED de puissance
+            hometitle2: "6 ans d’expérience"
             homepara2: "Elle maîtrise les technologies associées à savoir le management thermique, l’optique et bien entendu les platines à LED pilotées par des alimentations également conçus en interne."
             hometitle3: "Feel c'est aussi ..."
             homepara3: " L’association de solutions solaires, Eolienne, détection de présence, communication RF nous permet de répondre aux exigences techniques des clients aux conditions économiques définies à l’origine du projet."
@@ -54,3 +54,8 @@ views:
         para2: "Feel c'est une large gamme de produits de Projecteurs LED, et Tubes LED. Tous plus respectueux de l’environnement."
         para3: "En effet l’utilisation d’éclairage permet de diviser par trois la production de CO2 et de diminuer considérablement sa consommation d’énergie."
         connectadmin: "feel-connect"
+    product:
+        showslug:
+            feature: "Caractéristique"
+            listing: "Game"
+            specification: "Spécification electrique"

@@ -246,3 +246,49 @@ li.homebox:hover {
         color: $white;
     }
 }
+
+/************************ product *******************************/
+div.product-image {
+    img.product-max {
+        max-height: 400px;
+    }
+    li {
+        text-align: center;
+        img.product-mini {
+            max-height: 75px;
+        }
+    }
+    li:hover {
+        background: $primary-color;
+    }
+}
+
+li.productbox {
+    @include single-transition(all, 300ms);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px SOLID $secondary-color;
+    h2 {
+        color: $secondary-color;
+        font-size: 1.75rem;
+        text-align: center;
+    }
+    p {
+        color: $primary-color;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        text-align: justify;
+    }
+}
+
+li.productbox:hover {
+    background: $primary-color;
+    @include single-transition(all, 300ms);
+    p {
+        color: $white;
+    }
+}
+div.home{
+    margin:0;
+    padding: 0.5rem 0;
+}

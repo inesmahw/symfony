@@ -29,6 +29,12 @@ views:
         admincategory: "Categories"
         adminitemhome: "Carrousel"
         adminuploadtinymce: "Upload"
+        plus: "En savoir plus"
+        cond: "CGDV"
+        about: "A propos de nous"
+        contact: "Contactez-nous"
+        legale: "Mention légale"
+        folowus: "Suvez-nous sur :"
     HWIOAuthBundle:
         connect:
             login:

@@ -4,7 +4,8 @@
 
 $grey: #333333;
 $heightfooter: 250px;
-$heightfootersmall: 350px;
+$heightfootermin: 200px;
+$heightfootersmall: 300px;
 
 html, body {
     height: 100%;
@@ -22,7 +23,7 @@ div.sticky {
     .footer {
         .columns:nth-child(n+2) {
             border-left: 1px solid scale-color(#fff, $lightness: -30%);
-            min-height: 200px;
+            min-height: $heightfootermin;
         }
     }
 }
@@ -177,6 +178,7 @@ select.select-multiple {
 
 /****************** */
 hr.category {
+    margin-top: 2.5rem;
     margin-bottom: 2.5rem;
 }
 

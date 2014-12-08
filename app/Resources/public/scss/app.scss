@@ -48,46 +48,88 @@ li.category-box:hover {
     }
 }
 
+/*************************************** carrousel *************************************/
 div.owl-item {
     div.item {
         position: relative;
         @include single-transition(all, 1000ms, ease-in-out);
         overflow: hidden;
-        h2.title-itemhomebox {
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            right: 0;
-            transform-origin: 0 0;
-            transition-duration: 500ms;
-            transform: translateY(0);
-            font-weight: bold;
-            z-index: 100;
-            font-size: 1.8rem;
-            line-height: 2.5rem;
-            background: rgba(255, 255, 255, 0.35);
-            padding-top: 1rem;
-            a {
-                color: $secondary-color;
+        @media only screen and (max-width: 40em) {
+            h2.title-itemhomebox {
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                right: 0;
+                transform-origin: 0 0;
+                transition-duration: 500ms;
+                transform: translateY(0);
+                font-weight: bold;
+                z-index: 100;
+                font-size: 0.9rem;
+                line-height: 1rem;
+                background: rgba(255, 255, 255, 0.35);
+                padding-top: 1rem;
+                a {
+                    color: $secondary-color;
+                }
+            }
+            h3.title-itemhomebox {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform-origin: 0 0;
+                transition-duration: 500ms;
+                transform: translateX(-100%);
+                font-weight: bold;
+                z-index: 100;
+                font-size: 0.7rem;
+                line-height: 1rem;
+                background: rgba(255, 255, 255, 0.35);
+                padding-bottom: 1rem;
+                padding-right: 1rem;
+                a {
+                    color: $secondary-color;
+                }
             }
         }
-        h3.title-itemhomebox {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform-origin: 0 0;
-            transition-duration: 500ms;
-            transform: translateX(-100%);
-            font-weight: bold;
-            z-index: 100;
-            font-size: 1.2rem;
-            line-height: 1.7rem;
-            background: rgba(255, 255, 255, 0.35);
-            padding-bottom: 1rem;
-            padding-right: 1rem;
-            a {
-                color: $secondary-color;
+        @media only screen and (min-width: 40em) {
+            h2.title-itemhomebox {
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                right: 0;
+                transform-origin: 0 0;
+                transition-duration: 500ms;
+                transform: translateY(0);
+                font-weight: bold;
+                z-index: 100;
+                font-size: 1.8rem;
+                line-height: 2.5rem;
+                background: rgba(255, 255, 255, 0.35);
+                padding-top: 1rem;
+                a {
+                    color: $secondary-color;
+                }
+            }
+            h3.title-itemhomebox {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                transform-origin: 0 0;
+                transition-duration: 500ms;
+                transform: translateX(-100%);
+                font-weight: bold;
+                z-index: 100;
+                font-size: 1.2rem;
+                line-height: 1.7rem;
+                background: rgba(255, 255, 255, 0.35);
+                padding-bottom: 1rem;
+                padding-right: 1rem;
+                a {
+                    color: $secondary-color;
+                }
             }
         }
         div.icon-carousel {

@@ -33,29 +33,28 @@
                             {{ 'views.navbar.contact'|trans }}
                         </a>
                     </li>
-                    <li class="divider"></li>
-                    <li class="has-dropdown">
-                        <a href="#">
-                            <span class="icon-medium icon-flag vertical-middle"></span>
-                        </a>
-                        <ul class="dropdown">
-                            <li class="title back js-generated">
-                                <a href="javascript:void(0)">
-                                    {{ 'views.navbar.back'|trans }}
-                                </a>
-                            </li>
-                            {% set tabLang = ['fr','en','ru','al','es'] %}
-                            {% for lang in tabLang %}
-                                <li class="text-center">
-                                    <a class=""
-                                       href="{{ path('zimzim_categoryproduct_itemhomepublic', {'_locale': lang}) }}">
-                                        <span class="country-flag flag-{{ lang }}"></span>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="divider"></li>
+                        <li class="has-dropdown">
+                            <a href="#">
+                                <span class="icon-medium icon-flag vertical-middle"></span>
+                            </a>
+                            <ul class="dropdown">
+                                <li class="title back js-generated">
+                                    <a href="javascript:void(0)">
+                                        {{ 'views.navbar.back'|trans }}
                                     </a>
                                 </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% if is_granted('ROLE_ADMIN') %}
+                                {% for lang in enabledlangage %}
+                                    <li class="text-center">
+                                        <a class=""
+                                           href="{{ path('zimzim_categoryproduct_itemhomepublic', {'_locale': lang}) }}">
+                                            <span class="country-flag flag-{{ lang }}"></span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
                         <li class="has-dropdown">
                             <a href="#">
                                 <span class="icon-medium icon-cog vertical-middle"></span>
@@ -83,8 +82,15 @@
                                 <li class="divider"></li>
                                 <li>
                                     <a class="" href="{{ path('zimzim_categoryproduct_itemhome') }}">
-                                        <span class="icon-medium icon-address-book vertical-middle"></span>
+                                        <span class="icon-medium icon-earth vertical-middle"></span>
                                         {{ 'views.navbar.adminitemhome'|trans }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="" href="{{ path('zimzim_toolsbundle_uploadtinymce') }}">
+                                        <span class="icon-medium icon-file vertical-middle"></span>
+                                        {{ 'views.navbar.adminuploadtinymce'|trans }}
                                     </a>
                                 </li>
                             </ul>

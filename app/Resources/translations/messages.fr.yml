@@ -8,7 +8,7 @@ button:
     show: voir
     delete: supprimer
     find: "rechercher"
-    close: "rermer"
+    close: "fermer"
 link:
     return: "Retour à la liste"
 views:
@@ -28,6 +28,7 @@ views:
         adminproduct: "Produits"
         admincategory: "Categories"
         adminitemhome: "Carrousel"
+        adminuploadtinymce: "Upload"
     HWIOAuthBundle:
         connect:
             login:
@@ -36,15 +37,3 @@ views:
                 title3: "Ou "
                 login: "connexion"
                 register: "inscription"
-grid:
-    filter:
-        disabled: "Cacher"
-        enabled: "Filtrer"
-    generic:
-        nodata: "Pas encore de donnée"
-        nomessage: "Aucun résultat trouvé"
-flashbag:
-    success:
-        create: "Création réussit"
-        update: "Modification réussit"
-        delete: "Suppréssion réussit"

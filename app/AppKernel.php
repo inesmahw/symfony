@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new ZIMZIM\Bundles\UserBundle\ZIMZIMBundlesUserBundle(),
             new ZIMZIM\CategoryProductBundle\ZIMZIMCategoryProductBundle(),
             new ZIMZIM\CPBundle\ZIMZIMCPBundle(),
+            new ZIMZIM\ToolsBundle\ZIMZIMToolsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

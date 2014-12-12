@@ -83,18 +83,28 @@
 
             $("#owl-demo").owlCarousel({
 
-                autoPlay: 7000,
-                navigation: false,
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true,
-                'afterAction': function () {
-                    return this;
-                },
+                autoPlay: 3000,
+                itemsCustom: [
+                    [0, 1],
+                    [900, 2],
+                    [1200, 3]
+                ],
                 'addClassActive': true,
-                'afterInit': function () {
-                    return this;
-                }
+                navigation: false
+                /*
+                 autoPlay: 7000,
+                 navigation: false,
+                 slideSpeed: 300,
+                 paginationSpeed: 400,
+                 singleItem: true,
+                 'afterAction': function () {
+                 return this;
+                 },
+                 'addClassActive': true,
+                 'afterInit': function () {
+                 return this;
+                 }
+                 */
             });
 
             window.Carousel = $(".owl-carousel").data('owlCarousel');

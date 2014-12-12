@@ -30,11 +30,11 @@ views:
         adminitemhome: "Carrousel"
         adminuploadtinymce: "Upload"
         plus: "En savoir plus"
-        cond: "CGDV"
+        cond: "Condition générale de vente"
         about: "A propos de nous"
         contact: "Contactez-nous"
         legale: "Mention légale"
-        folowus: "Suvez-nous sur :"
+        folowus: "Suivez-nous sur :"
     HWIOAuthBundle:
         connect:
             login:
@@ -46,14 +46,14 @@ views:
     itemhome:
         index:
             title: "Feel, Le meilleur du lighting"
-            feel: "Feel lightting c'est :"
+            feel: "Feel lighting c'est :"
             hometitle1: "Société Lilloise créée en 2002"
             homepara1: "Spécialisée dans l’étude et la fabrication de dispositifs d’éclairage à LED, FEEL se distingue par sa capacité d’innovation et sa réactivité"
             hometitle2: "6 ans d’expérience"
             homepara2: "Elle maîtrise les technologies associées à savoir le management thermique, l’optique et bien entendu les platines à LED pilotées par des alimentations également conçus en interne."
             hometitle3: "Feel c'est aussi ..."
             homepara3: " L’association de solutions solaires, Eolienne, détection de présence, communication RF nous permet de répondre aux exigences techniques des clients aux conditions économiques définies à l’origine du projet."
-            hometitle4: "Made in France"
+            hometitle4: "Fabrication Francaise"
             homepara4: "Nos fabrications sont intégralement réalisées en France afin de garantir une qualité irréprochable. Toutes nos conceptions sont réalisées rigoureusement selon les normes applicables."
     footer:
         para1: "FEEL, spécialiste dans l’éclairage à base de LED, et solutions de câblages pour les professionnels."

@@ -13,24 +13,20 @@ li.category-box {
         overflow: hidden;
         text-align: center;
         img {
-            padding: 1.75rem;
+            padding: 0.2 rem 1.75rem;
             z-index: 101;
         }
         h2.title-categorybox {
             position: absolute;
-            bottom: 100%;
+            bottom: 0;
             left: 0;
             right: 0;
             transform-origin: 0 0;
             transition-duration: 500ms;
-            font-weight: bold;
             z-index: 100;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            font-size: 1.8rem;
-            line-height: 2.5rem;
+            font-size: 1rem;
+            line-height: 2rem;
             background: rgba(255, 255, 255, 0.35);
-            padding-top: 1rem;
             a {
                 color: $secondary-color;
             }
@@ -41,7 +37,7 @@ li.category-box {
 li.category-box:hover {
     div.fullfull {
         h2.title-categorybox {
-            transform: translateY(100%);
+            transform: translateY(-100%);
             transform-origin: 0 0;
             @include single-transition(all, 600ms, ease-in-out);
         }

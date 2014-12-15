@@ -10,7 +10,8 @@
 /bin/*
 !bin/console
 !bin/symfony_requirements
-/composer.phar
+composer.phar
+composer.lock
 
 .idea/
 

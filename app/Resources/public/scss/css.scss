@@ -110,6 +110,28 @@ span.logo-small-tiers {
     background-position: 40px;
 }
 
+span.logo-small-vendor {
+    width: 71px;
+    height: 70px;
+    background-size: 213px 70px;
+    display: inline-block;
+}
+
+.image-facebook-vendor {
+    background-image: url('../../bundles/zimzimbundlesuser/images/logo_vendor.png');
+    background-position: 0;
+}
+
+.image-google-vendor {
+    background-image: url('../../bundles/zimzimbundlesuser/images/logo_vendor.png');
+    background-position: 71px;
+}
+
+.image-youtube-vendor {
+    background-image: url('../../bundles/zimzimbundlesuser/images/logo_vendor.png');
+    background-position: 142px;
+}
+
 /************************ Tools **************/
 .pointer {
     cursor: pointer;

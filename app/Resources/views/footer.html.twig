@@ -29,19 +29,19 @@
             <h4>{{ 'views.navbar.folowus'|trans }}</h4>
             <ul class="footer-links">
                 <li>
-                    <a href="{{ path('fos_user_security_login') }}">
-                        {{ 'views.navbar.login'|trans }}
+                    <a href="#">
+                        <span class="logo-small-vendor  image-facebook-vendor"></span>
+                    </a>
+                    <a href="#">
+                        <span class="logo-small-vendor  image-google-vendor"></span>
+                    </a>
+                    <a href="#">
+                        <span class="logo-small-vendor  image-youtube-vendor"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="logo-small-tiers image-facebook"></span>
-                    </a>
-                    <a href="#">
-                        <span class="logo-small-tiers image-google"></span>
-                    </a>
-                    <a href="#">
-                        <span class="logo-small-tiers image-twitter"></span>
+                    <a href="{{ path('fos_user_security_login') }}">
+                        {{ 'views.navbar.login'|trans }}
                     </a>
                 </li>
                 <ul>

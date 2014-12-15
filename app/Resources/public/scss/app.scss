@@ -162,6 +162,9 @@ div.owl-item.active {
             transform-origin: 0 0;
             @include single-transition(all, 1000ms, ease-in-out);
         }
+        div.icon-carousel img{
+            display: none;
+        }
     }
 }
 

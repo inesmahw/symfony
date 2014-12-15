@@ -3,6 +3,10 @@
 // Licensed under MIT Open Source
 
 
+//FONT
+@import url(http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed);
+
+
 //COLOR
 $black: #000000;
 $grey: #333333;
@@ -53,7 +57,7 @@ $blue: #8598BD;
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: 'Roboto', sans-serif;;//"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -130,7 +134,7 @@ $secondary-color: $darkblue;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
+$header-font-family: 'Roboto Condensed', sans-serif;
 // $header-font-weight: normal;
 // $header-font-style: normal;
 $header-font-color: $darkgrey;

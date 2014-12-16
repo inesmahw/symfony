@@ -5,7 +5,7 @@
 $grey: #333333;
 $heightfooter: 250px;
 $heightfootermin: 200px;
-$heightfootersmall: 300px;
+$heightfootersmall: 400px;
 
 html, body {
     height: 100%;
@@ -111,9 +111,9 @@ span.logo-small-tiers {
 }
 
 span.logo-small-vendor {
-    width: 71px;
-    height: 70px;
-    background-size: 213px 70px;
+    width: 60px;
+    height: 60px;
+    background-size: 180px 60px;
     display: inline-block;
 }
 
@@ -124,12 +124,12 @@ span.logo-small-vendor {
 
 .image-google-vendor {
     background-image: url('../../bundles/zimzimbundlesuser/images/logo_vendor.png');
-    background-position: 71px;
+    background-position: 120px;
 }
 
 .image-youtube-vendor {
     background-image: url('../../bundles/zimzimbundlesuser/images/logo_vendor.png');
-    background-position: 142px;
+    background-position: 60px;
 }
 
 /************************ Tools **************/

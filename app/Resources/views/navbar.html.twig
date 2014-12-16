@@ -4,12 +4,15 @@
         <nav role="navigation" data-topbar="" class="top-bar">
             <ul class="title-area">
                 <li class="name">
-                    <span class="title">
+                    {#<span class="title">#}
                         <a href="{{ path('zimzim_categoryproduct_itemhomepublic') }}">
+                            {#
                             <span class="icon-medium icon-home vertical-middle"></span>
                             {{ 'views.navbar.title'|trans }}
+                            #}
+                            <img src="{{ asset('bundles/zimzimbundlesuser/images/logo_feel_lighting_le_meilleur_du_lighting.png') }}" />
                         </a>
-                    </span>
+                    {#</span>#}
                 </li>
                 <li class="toggle-topbar menu-icon">
                     <a href="#">

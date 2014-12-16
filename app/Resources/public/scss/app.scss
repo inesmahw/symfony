@@ -13,33 +13,17 @@ li.category-box {
         overflow: hidden;
         text-align: center;
         img {
-            padding: 0.2 rem 1.75rem;
+            padding: 0.5rem 2.5rem;
             z-index: 101;
         }
-        h2.title-categorybox {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform-origin: 0 0;
-            transition-duration: 500ms;
-            z-index: 100;
-            font-size: 1rem;
-            line-height: 2rem;
-            background: rgba(255, 255, 255, 0.35);
-            a {
-                color: $secondary-color;
-            }
-        }
     }
-}
-
-li.category-box:hover {
-    div.fullfull {
-        h2.title-categorybox {
-            transform: translateY(-100%);
-            transform-origin: 0 0;
-            @include single-transition(all, 600ms, ease-in-out);
+    h2.title-categorybox {
+        z-index: 100;
+        font-size: 1rem;
+        line-height: 1rem;
+        a {
+            font-family: $body-font-family;
+            color: $black;
         }
     }
 }
@@ -162,7 +146,7 @@ div.owl-item.active {
             transform-origin: 0 0;
             @include single-transition(all, 1000ms, ease-in-out);
         }
-        div.icon-carousel img{
+        div.icon-carousel img {
             display: none;
         }
     }

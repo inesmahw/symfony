@@ -23,28 +23,34 @@
                         {{ 'views.navbar.legale'|trans }}
                     </a>
                 </li>
-                <ul>
+            </ul>
         </div>
-        <div class="small-12 medium-6 columns">
+        <div class="small-12 medium-6 columns barre">
             <h4>{{ 'views.navbar.folowus'|trans }}</h4>
+
+            <div class="small-4 columns">
+                <a href="#">
+                    <span class="logo-small-vendor  image-facebook-vendor"></span>
+                </a>
+            </div>
+            <div class="small-4 columns">
+                <a href="#">
+                    <span class="logo-small-vendor  image-google-vendor"></span>
+                </a>
+            </div>
+            <div class="small-4 columns">
+                <a href="#">
+                    <span class="logo-small-vendor  image-youtube-vendor"></span>
+                </a>
+
+            </div>
             <ul class="footer-links">
-                <li>
-                    <a href="#">
-                        <span class="logo-small-vendor  image-facebook-vendor"></span>
-                    </a>
-                    <a href="#">
-                        <span class="logo-small-vendor  image-google-vendor"></span>
-                    </a>
-                    <a href="#">
-                        <span class="logo-small-vendor  image-youtube-vendor"></span>
-                    </a>
-                </li>
                 <li>
                     <a href="{{ path('fos_user_security_login') }}">
                         {{ 'views.navbar.clientspace'|trans }}
                     </a>
                 </li>
-                <ul>
+            </ul>
         </div>
     </div>
 </footer>

@@ -6,10 +6,10 @@
                      alt="{{ categoryproduct.product.altpath1 }}"/>
             {% endif %}
         </a>
+        <h2 class="text-center title-categorybox nomargin">
+            <a href="{{ path('zimzim_categoryproduct_product_showbyslug', {'slug':categoryproduct.product.slug}) }}">
+                {{ categoryproduct.product.name }}
+            </a>
+        </h2>
     </div>
-    <h2 class="text-center title-categorybox nomargin">
-        <a href="{{ path('zimzim_categoryproduct_product_showbyslug', {'slug':categoryproduct.product.slug}) }}">
-            {{ categoryproduct.product.name }}
-        </a>
-    </h2>
 </li>

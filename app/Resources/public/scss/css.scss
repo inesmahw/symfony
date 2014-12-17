@@ -21,7 +21,7 @@ div.sticky {
 /******************************* footer *************************************/
 @media only screen and (min-width: 40.063em) {
     .footer {
-        .columns:nth-child(n+2) {
+        .columns.barre:nth-child(n+2) {
             border-left: 1px solid scale-color(#fff, $lightness: -30%);
             min-height: $heightfootermin;
         }
@@ -173,6 +173,7 @@ nav.top-bar span.title {
 .title-category {
     padding: 1rem 0 0.5rem 0;
     font-weight: bold;
+    color: $black;
 }
 
 .fake-h1-category {

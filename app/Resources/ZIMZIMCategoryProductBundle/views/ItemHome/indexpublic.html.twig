@@ -14,10 +14,14 @@
         </div>
     </div>
 
-    <div id="owl-demo" class="owl-carousel owl-theme">
-        {% for entity in entities %}
-            {% include 'ZIMZIMCategoryProductBundle:ItemHome:include/itemhomebox.html.twig' with {'entity': entity} %}
-        {% endfor %}
+    <div class="row full-width">
+        <div class="small-10 small-centered columns">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+                {% for entity in entities %}
+                    {% include 'ZIMZIMCategoryProductBundle:ItemHome:include/itemhomebox.html.twig' with {'entity': entity} %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     <hr class="category">
@@ -77,9 +81,10 @@
 
     <div class="row full-width">
         <div class="small-12 medium-8 medium-centered columns">
-            <h2 class="text-center">
+            <p class="paratitle text-center">
                 {{ 'views.itemhome.index.titleeco'|trans|raw }}
-            </h2>
+                </h2>
+
             <p class="paraplus text-center">
                 {{ 'views.itemhome.index.paraeco'|trans|raw }}
             </p>

@@ -35,6 +35,7 @@ views:
         contact: "Contactez-nous"
         legale: "Mention légale"
         folowus: "Suivez-nous sur :"
+        clientspace: "Espace client"
     HWIOAuthBundle:
         connect:
             login:

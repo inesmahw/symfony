@@ -243,6 +243,7 @@ p.paratitle {
 
 h1.headertitle {
     font-size: 2rem;
+    color: $black;
 }
 
 li.homebox {
@@ -253,7 +254,7 @@ li.homebox {
         text-align: center;
     }
     p.parahome {
-        color: $primary-color;
+        color: $black;
         font-size: 1.1rem;
         padding: 0.5rem;
         text-align: justify;
@@ -273,7 +274,7 @@ li.homebox:hover {
 
 p.paraplus{
     padding: 2rem 0.5rem;
-    color: $primary-color;
+    color: $black;
 }
 h2.titlehome{
     color: $secondary-color;
@@ -306,7 +307,7 @@ li.productbox {
         text-align: center;
     }
     p {
-        color: $primary-color;
+        color: $black;
         font-size: 1.1rem;
         padding: 0.5rem;
         text-align: justify;
@@ -316,6 +317,9 @@ li.productbox {
 li.productbox:hover {
     background: $primary-color;
     @include single-transition(all, 300ms);
+    h2 {
+        color: $white;
+    }
     p {
         color: $white;
     }

@@ -140,6 +140,9 @@ span.logo-small-vendor {
 .nomargin {
     margin: 0 !important;
 }
+.nopadding {
+    padding: 0 !important;
+}
 
 .vertical-middle {
     vertical-align: middle;
@@ -151,15 +154,9 @@ span.logo-small-vendor {
 }
 
 /************************ Top bar **************/
-nav.top-bar span.title {
-    line-height: 45px;
-    padding-left: 1rem;
-    height: 45px;
-    a {
-        color: $white;
-    }
+img.img-navbar{
+	padding: 8px 0 0 15px;
 }
-
 /************** COLOR **********************/
 .bg-lightwhite {
     background: $lightwhite;
@@ -201,7 +198,6 @@ select.select-multiple {
 
 /****************** */
 hr.category {
-    margin-top: 2.5rem;
     margin-bottom: 2.5rem;
 }
 
@@ -237,14 +233,18 @@ span.country-flag {
 
 /****************** page home *******************************/
 p.paratitle {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
     color: $primary-color;
     text-align: center;
 }
 
 h1.headertitle {
-    font-size: 2rem;
-    color: $black;
+    font-size: 4rem;
+    color: $blue;
+	padding: 1.3rem 0 0;
+}
+img.imageheadertitle{
+	height: 6rem;
 }
 
 li.homebox {
@@ -253,6 +253,7 @@ li.homebox {
         color: $secondary-color;
         font-size: 1.75rem;
         text-align: center;
+		padding: 1rem 0 0;
     }
     p.parahome {
         color: $black;
@@ -306,17 +307,19 @@ li.productbox {
         color: $secondary-color;
         font-size: 1.75rem;
         text-align: center;
+		padding: 1rem 0 0;
     }
     p {
         color: $black;
         font-size: 1.1rem;
         padding: 0.5rem;
+		margin: 0 !important;
         text-align: justify;
     }
 }
 
 li.productbox:hover {
-    background: $primary-color;
+    background: #afbde1;
     @include single-transition(all, 300ms);
     h2 {
         color: $white;

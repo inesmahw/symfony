@@ -42,22 +42,15 @@
         {% set linkentity = path('zimzim_categoryproduct_category_listslug', {'slug':entity.slug}) %}
     {% endif %}
 
-    <div class="row">
-        <div class="small-10 small-centered columns">
-            <div class="row">
-                <div class="medium-2 columns hide-for-small">
-                    <div class="title-category nomargin">
-                        <a href="{{ linkentity }}">
-                            <img src="/{{ entity.webpath }}" class="full-width"/>
-                        </a>
-                    </div>
-                </div>
-                <div class="medium-10 columns">
-                    <a href="{{ linkentity }}">
-                        <h1 class="text-center title-category nomargin">
-                            {{ entity.name }}
+            <div class="row full-width">
+                <div class="medium-12 columns">
+                        <h1 class="text-center headertitle">
+							<a href="{{ linkentity }}">
+								<img src="/{{ entity.webpath }}" class="imageheadertitle"/>
+								&nbsp;&nbsp;
+								{{ entity.name }}
+							</a>
                         </h1>
-                    </a>
                 </div>
                 {% if entity.content != null %}
                     <div class="medium-12 columns">
@@ -65,8 +58,7 @@
                     </div>
                 {% endif %}
             </div>
-        </div>
-    </div>
+
 
 
     {% if entity.children|length != 0 %}

@@ -318,6 +318,9 @@ li.productbox {
 		margin: 0 !important;
         text-align: justify;
     }
+    span.puce{
+        color: $lightwhite;
+    }
 }
 
 li.productbox:hover {
@@ -328,6 +331,9 @@ li.productbox:hover {
     }
     p {
         color: $white;
+    }
+    span.puce{
+        color: $blue;
     }
 }
 div.home{

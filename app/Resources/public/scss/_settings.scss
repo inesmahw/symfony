@@ -16,10 +16,13 @@ $lightwhite: #F6F6F6;
 $darkgrey: #696C6D;
 $darkblue: #4A597E;
 $blue: #8598BD;
-
+$lightblue: #afbde1;
 
 .bgblue{
     color: $blue !important;
+}
+.bglightblue{
+    color: $lightblue !important;
 }
 .bgdarkstyle{
     color: $darkblue !important;

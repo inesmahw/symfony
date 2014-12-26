@@ -46,7 +46,7 @@ views:
                 register: "inscription"
     itemhome:
         index:
-            title: "Feel, Le meilleur du lighting"
+            title: "Feel, l’expert français de la LED"
             feel: "Feel lighting c'est :"
             hometitle1: "Société lilloise créée en 2002"
             homepara1: "Spécialisée dans l’étude et la fabrication de dispositifs d’éclairage à LED, FEEL se distingue par sa capacité d’innovation et sa réactivité"

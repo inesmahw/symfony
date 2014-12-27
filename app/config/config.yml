@@ -38,7 +38,7 @@ framework:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ ZIMZIMToolsBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
